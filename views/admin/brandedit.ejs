@@ -1,0 +1,192 @@
+<%- include('./headerAd.ejs') %>
+
+    <main id="main-content" class="site-main-dashboard">
+        <div class="page-dashboard-wrap">
+            <div class="dashboard">
+                <div class="row ">
+                    <div class="col-12">
+                        <h4 class="title-dashboard">Brand Edit</h4>
+                    </div>
+                </div>
+                <div class="themesflat-container">
+                    <div class="tf-add-cart">
+                        <form action="/admin/brandupdate/<%= b._id %>" enctype="multipart/form-data" method="post" id="submit-add-cart"
+                            class="form-add-cart needs-validation" novalidate>
+                            <fieldset id="information" class="mb-60">
+                                <div class="inner-title mb-30">
+
+                                    <h3 class="title">Edit Your Brand</h3>
+                                </div>
+                                <div class="tfad-listing-title mb-30">
+                                    <div class="form-group">
+                                        <label>Listing Name</label>
+                                        <input type="text" id="listing-title" class="form-control" name="brand"
+                                            placeholder="Enter Brand here" value="<%= b.brand %>">
+                                    </div>
+                                    <br>
+                                    <div class="upload-image">
+                                        <label for="photoLoad" class="uploadLabel">
+                                            <img src="<%= b.image.url %>" alt="">
+                                            <span></span>
+                                            <!-- <input type="file" id="photoLoad" name="image" class="photoLoad"
+                                                accept="image/*"> -->
+                                        </label>  
+                                    </div>
+                                    
+                                </div>
+
+
+                                <button type="submit" class="button-save-listing">Update
+                                    Brand</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <br><br><br><br> <br><br><br><br> <br><br><br><br>
+
+
+            </div>
+        </div>
+    </main>
+
+    </div>
+    </div>
+
+    </div>
+    <!-- /#page -->
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+    <!-- Button Top -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Register</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="/" accept-charset="utf-8"
+                                novalidate="novalidate">
+                                <fieldset>
+                                    <label>User name</label>
+                                    <input type="text" class="tb-my-input" name="text" placeholder="User name">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Email</label>
+                                    <input type="email" class="tb-my-input" name="email" placeholder="Email">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Confirm password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Confirm password">
+                                </fieldset>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Sign Up</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30">Allready have an account? <a class="color-popup "
+                            data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Login</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Login</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="#" accept-charset="utf-8">
+                                <fieldset>
+                                    <label>Account</label>
+                                    <input type="email" id="email" class="tb-my-input" name="email"
+                                        placeholder="Email or user name">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <div class="title-forgot t-al-right mb-20"><a class="t-al-right"
+                                        data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                                        data-bs-dismiss="modal">Forgot password</a>
+                                </div>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Login</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30">Don’t you have an account? <a class="color-popup"
+                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Register</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Forgot your password?</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="#" accept-charset="utf-8">
+
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Get new password</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30"><a class="color-popup" data-bs-target="#exampleModalToggle2"
+                            data-bs-toggle="modal" data-bs-dismiss="modal">Back to Login</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- Modal -->
+
+
+    <!-- Javascript -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../assets/js/swiper-bundle.min.js"></script>
+    <script src="../../assets/js/swiper.js"></script>
+    <script src="../../assets/js/jquery-countTo.js"></script>
+    <script src="../../assets/js/nouislider.min.js"></script>
+    <script src="../../assets/js/price-ranger.js"></script>
+    <script src="../../assets/js/magnific-popup.min.js"></script>
+    <script src="../../assets/js/apexcharts.js"></script>
+    <script src="../../assets/js/line-chart.js"></script>
+    <script src="../../assets/js/wow.min.js"></script>
+    <script src="../../assets/js/map.min.js"></script>
+    <script src="../../assets/js/map.js"></script>
+    <script src="../../assets/js/main.js"></script>
+
+    </body>
+
+    </html>

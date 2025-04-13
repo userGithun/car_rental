@@ -1,0 +1,383 @@
+<%- include('./headerAd.ejs') %>
+
+    <main id="main-content" class="site-main-dashboard">
+        <div class="page-dashboard-wrap">
+            <div class="dashboard">
+                <div class="row ">
+                    <div class="col-12">
+                        <h4 class="title-dashboard">Add Cars</h4>
+                    </div>
+                </div>
+                <div class="themesflat-container">
+                    <div class="tf-add-cart">
+                        <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate>
+                            <fieldset id="information" class="mb-60">
+                                <div class="inner-title mb-30">
+                                    <span class="sub-title">Add Your Car Today</span>
+                                    <h3 class="title">Add Your car</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="tfad-listing-title mb-30 col-md-8">
+                                        <div class="form-group">
+                                            <label>Listing Title (*)</label>
+                                            <input type="text" id="listing-title" class="form-control"
+                                                name="listing-title" placeholder="Enter title here" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label>Listing Brand (*)</label>
+                                        <div class="group-select">
+                                            <div class="nice-select" tabindex="0"><span class="current">Select
+                                                    Brand</span>
+                                                <ul class="list">
+                                                    <% brand.forEach((item)=>{ %>
+                                                        <li data-value class="option selected">
+                                                            <%= item.brand %>
+                                                        </li>
+
+                                                        <% }) %>
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tfad-listing-title mb-30 col-md-12">
+                                        <div class="form-group">
+                                            <label>Listing Overview (*)</label>
+                                            <input type="text" id="listing-title" class="form-control"
+                                                name="listing-title" placeholder="Enter title here" value="">
+                                        </div>
+                                    </div>
+
+                                    <!-- 3 -->
+                                    <div class="tfad-listing-title mb-30 col-md-8">
+                                        <div class="form-group">
+                                            <label>Price Per Day(in INR)*</label>
+                                            <input type="text" id="listing-title" class="form-control"
+                                                name="listing-title" placeholder="Enter title here" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label>Select Fuel type (*)</label>
+                                        <div class="group-select">
+                                            <div class="nice-select" tabindex="0"><span class="current">Select</span>
+                                                <ul class="list">
+                                                    <li data-value class="option selected">Petrol</li>
+                                                    <li data-value="3 Series" class="option">Deasel</li>
+                                                    <li data-value="3 Series" class="option">Electric</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--4-->
+                                    <div class="tfad-listing-title mb-30 col-md-6">
+                                        <div class="form-group">
+                                            <label>Model Year(*)</label>
+                                            <input type="text" id="listing-title" class="form-control"
+                                                name="listing-title" placeholder="Enter title here" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="tfad-listing-title mb-30 col-md-6">
+                                        <div class="form-group">
+                                            <label>Seat Capacity(*)</label>
+                                            <input type="text" id="listing-title" class="form-control"
+                                                name="listing-title" placeholder="Enter title here" value="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--row end-->
+
+
+                            </fieldset>
+                            <fieldset id="amenities" class="mb-60">
+                                <div class="inner-title mb-30">
+                                    <span class="sub-title">Add Your Car Today</span>
+                                    <h3 class="title">Select Listing Features</h3>
+                                </div>
+                                <div class="tfad-listing-feature">
+                                    <div class="listing-feature-item">
+                                        <div class="form-group">
+                                            <div class="group-select">
+                                                <div class="radio">
+                                                    <input id="front" type="checkbox" name="check" value="check">
+                                                    <label for="front">A/C: Front</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="rear" type="checkbox" name="check" value="check">
+                                                    <label for="rear">A/C: Rear</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="camera" type="checkbox" name="check" value="check">
+                                                    <label for="camera">Backup Camera</label>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="listing-feature-item">
+                                        <div class="form-group">
+                                            <div class="group-select">
+                                                <div class="radio">
+                                                    <input id="stereo" type="checkbox" name="check" value="check">
+                                                    <label for="stereo">AM/FM Stereo</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="cd" type="checkbox" name="check" value="check">
+                                                    <label for="cd">CD Player</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="dvd" type="checkbox" name="check" value="check">
+                                                    <label for="dvd">DVD System</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="listing-feature-item">
+                                        <div class="form-group">
+                                            <div class="group-select">
+                                                <div class="radio">
+                                                    <input id="driver" type="checkbox" name="check" value="check">
+                                                    <label for="driver">Airbag: Driver</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="passenger" type="checkbox" name="check" value="check">
+                                                    <label for="passenger">Airbag: Passenger</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="brakes" type="checkbox" name="check" value="check">
+                                                    <label for="brakes">Antilock Brakes</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="listing-feature-item">
+                                        <div class="form-group">                                           
+                                            <div class="group-select">
+                                                <div class="radio">
+                                                    <input id="power" type="checkbox" name="check" value="check">
+                                                    <label for="power">Power Windows</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="defroster" type="checkbox" name="check" value="check">
+                                                    <label for="defroster">Windows Defroster</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="rear-window" type="checkbox" name="check" value="check">
+                                                    <label for="rear-window">Rear Window</label>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </fieldset>
+
+
+                            
+                            <fieldset id="upload-media" class="pd-bg">
+                                <div class="inner-title mb-30">
+                                    <span class="sub-title">Media</span>
+                                    <h3 class="title">Upload Your Photos</h3>
+                                </div>
+                                <div class="upload-image-add-car">
+                                    <div class="upload-image">
+                                        <label for="photoLoad" class="uploadLabel">
+                                            <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span>
+                                            <input type="file" id="photoLoad" class="photoLoad" accept="image/*">
+                                        </label>
+                                    </div>
+                                    <div class="upload-image">
+                                        <label for="photoLoad1" class="uploadLabel">
+                                            <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span>
+                                            <input type="file" id="photoLoad1" class="photoLoad" accept="image/*">
+                                        </label>
+                                    </div>
+                                    <div class="upload-image">
+                                        <label for="photoLoad2" class="uploadLabel">
+                                            <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span>
+                                            <input type="file" id="photoLoad2" class="photoLoad" accept="image/*">
+                                        </label>
+                                    </div>
+                                    <div class="upload-image">
+                                        <label for="photoLoad3" class="uploadLabel">
+                                            <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span>
+                                            <input type="file" id="photoLoad3" class="photoLoad" accept="image/*">
+                                        </label>
+                                    </div>
+                                    <div class="upload-image">
+                                        <label for="photoLoad4" class="uploadLabel">
+                                            <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span>
+                                            <input type="file" id="photoLoad4" class="photoLoad" accept="image/*">
+                                        </label>
+                                    </div>
+                                </div>
+                                <p class="one-photo text-red">*You must upload at least one photo</p>
+                            </fieldset>
+                            
+                            
+                            <fieldset>
+                                <button type="submit" class="button-save-listing">Add
+                                    Car</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+
+    </div>
+    </div>
+
+    </div>
+    <!-- /#page -->
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+    <!-- Button Top -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Register</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="/" accept-charset="utf-8"
+                                novalidate="novalidate">
+                                <fieldset>
+                                    <label>User name</label>
+                                    <input type="text" class="tb-my-input" name="text" placeholder="User name">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Email</label>
+                                    <input type="email" class="tb-my-input" name="email" placeholder="Email">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Confirm password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Confirm password">
+                                </fieldset>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Sign Up</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30">Allready have an account? <a class="color-popup "
+                            data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Login</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Login</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="#" accept-charset="utf-8">
+                                <fieldset>
+                                    <label>Account</label>
+                                    <input type="email" id="email" class="tb-my-input" name="email"
+                                        placeholder="Email or user name">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <div class="title-forgot t-al-right mb-20"><a class="t-al-right"
+                                        data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                                        data-bs-dismiss="modal">Forgot password</a>
+                                </div>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Login</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30">Don’t you have an account? <a class="color-popup"
+                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Register</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Forgot your password?</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="#" accept-charset="utf-8">
+
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Get new password</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30"><a class="color-popup" data-bs-target="#exampleModalToggle2"
+                            data-bs-toggle="modal" data-bs-dismiss="modal">Back to Login</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- Modal -->
+
+
+    <!-- Javascript -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/swiper.js"></script>
+    <script src="../assets/js/jquery-countTo.js"></script>
+    <script src="../assets/js/nouislider.min.js"></script>
+    <script src="../assets/js/price-ranger.js"></script>
+    <script src="../assets/js/magnific-popup.min.js"></script>
+    <script src="../assets/js/apexcharts.js"></script>
+    <script src="../assets/js/line-chart.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/map.min.js"></script>
+    <script src="../assets/js/map.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    </body>
+
+    </html>

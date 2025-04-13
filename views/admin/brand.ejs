@@ -1,0 +1,288 @@
+<%- include('./headerAd.ejs') %>
+
+    <main id="main-content" class="site-main-dashboard">
+        <div class="page-dashboard-wrap">
+            <div class="dashboard">
+                <div class="row ">
+                    <div class="col-12">
+                        <h4 class="title-dashboard">Brand</h4>
+                    </div>
+                </div>
+                <div class="themesflat-container">
+                    <div class="tf-add-cart">
+                        <form action="/admin/brandInsert" enctype="multipart/form-data" method="post" id="submit-add-cart"
+                            class="form-add-cart needs-validation" novalidate>
+                            <fieldset id="information" class="mb-60">
+                                <div class="inner-title mb-30">
+
+                                    <h3 class="title">Add Your Brand</h3>
+                                    <% if(msg.length>0){%>
+                                        <div class="text-center alert alert-success">
+                                            <%= msg %>
+                                        </div>
+                                        <%}%>
+                                            <% if(msg1.length>0){%>
+                                                <div class="text-center alert alert-success">
+                                                    <%= msg1 %>
+                                                </div>
+                                                <%}%>
+                                                    <% if(msg2.length>0){%>
+                                                        <div class="text-center alert alert-danger">
+                                                            <%= msg2 %>
+                                                        </div>
+                                                        <%}%>
+                                </div>
+                                <div class="tfad-listing-title mb-30">
+                                    <div class="form-group">
+                                        <label>Listing Name</label>
+                                        <input type="text" id="listing-title" class="form-control" name="brand"
+                                            placeholder="Enter Brand here" value="">
+                                    </div>
+                                    <br>
+                                    <div class="upload-image">
+                                        <label for="photoLoad" class="uploadLabel">
+                                            <i class="icon-Group4"></i>
+                                            <span>Add a Logo</span>
+                                            <input type="file" name="image" multiple>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="button-save-listing">Add
+                                    Brand</button>
+                            </fieldset>
+                        </form>
+                        <br><br>
+                        
+
+                    </div>
+                </div>
+
+                <!--Brand display start-->
+                <div class="row ">
+                    <div class="col-12">
+
+                        <h4 class="title-dashboard">Brand Display</h4>
+
+
+                    </div>
+                    <br><br>
+                    <br><br>
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th colspan="5" class="text-center">Brand List</th>
+                            </tr>
+                        </thead>
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Brand Name</th>
+                                <th>Creation Date</th>
+                                <th>Update Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% b.forEach((brand, index)=> { %>
+                                <tr>
+                                    <td>
+                                        <%= index + 1 %>
+                                    </td>
+                                    <td>
+                                        <%= brand.brand %>
+                                    </td>
+                                    <td>
+                                        <%= brand.createdAt.toLocaleDateString() %>
+                                    </td>
+                                    <td>
+                                        <% if (brand.updatedAt && brand.updatedAt.getTime()
+                                            !==brand.createdAt.getTime()) { %>
+                                            <%= brand.updatedAt.toLocaleDateString() %>
+                                                <% } else { %>
+                                                    -
+                                                    <% } %>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/editbrand/<%= brand._id %>"
+                                            class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="/admin/deletebrand/<%= brand._id %>"
+                                            class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+
+
+                </div>
+                <br><br><br><br><br>
+
+            </div>
+        </div>
+
+    </main>
+
+    </div>
+    </div>
+
+    </div>
+    <!-- /#page -->
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+    <!-- Button Top -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Register</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="/" accept-charset="utf-8"
+                                novalidate="novalidate">
+                                <fieldset>
+                                    <label>User name</label>
+                                    <input type="text" class="tb-my-input" name="text" placeholder="User name">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Email</label>
+                                    <input type="email" class="tb-my-input" name="email" placeholder="Email">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Confirm password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Confirm password">
+                                </fieldset>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Sign Up</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30">Allready have an account? <a class="color-popup "
+                            data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Login</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Login</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="#" accept-charset="utf-8">
+                                <fieldset>
+                                    <label>Account</label>
+                                    <input type="email" id="email" class="tb-my-input" name="email"
+                                        placeholder="Email or user name">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <div class="title-forgot t-al-right mb-20"><a class="t-al-right"
+                                        data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                                        data-bs-dismiss="modal">Forgot password</a>
+                                </div>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Login</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30">Don’t you have an account? <a class="color-popup"
+                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Register</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Forgot your password?</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="#" accept-charset="utf-8">
+
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Get new password</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30"><a class="color-popup" data-bs-target="#exampleModalToggle2"
+                            data-bs-toggle="modal" data-bs-dismiss="modal">Back to Login</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- Modal -->
+
+
+    <!-- Javascript -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/swiper.js"></script>
+    <script src="../assets/js/jquery-countTo.js"></script>
+    <script src="../assets/js/nouislider.min.js"></script>
+    <script src="../assets/js/price-ranger.js"></script>
+    <script src="../assets/js/magnific-popup.min.js"></script>
+    <script src="../assets/js/apexcharts.js"></script>
+    <script src="../assets/js/line-chart.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/map.min.js"></script>
+    <script src="../assets/js/map.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <!-- <script>
+        // Sidebar ke sabhi menu items lo
+        const menuItems = document.querySelectorAll(".menu-item");
+
+        // Current page ka path nikalo (example: /dashboard.html)
+        const currentPage = window.location.pathname.split("/").pop();
+
+        menuItems.forEach(item => {
+            // us link ka href nikalo
+            const itemPage = item.getAttribute("href");
+
+            // agar href current page ke barabar hai
+            if (itemPage === currentPage) {
+                // to active class add karo
+                item.classList.add("active");
+            } else {
+                // warna hata do (taaki purane active hat jaaye)
+                item.classList.remove("active");
+            }
+        }); -->
+    </script>
+
+    </body>
+
+    </html>
