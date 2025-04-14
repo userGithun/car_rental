@@ -1,7 +1,7 @@
 const BrandModel = require("../../model/brand");
 const cloudinary = require("cloudinary");
-const { storage } = require('./cloudinary');
-const upload = multer({ storage });
+// const { storage } = require('./cloudinary');
+// const upload = multer({ storage });
 
 
 // Configuration

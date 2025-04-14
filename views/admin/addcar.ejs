@@ -6,11 +6,22 @@
                 <div class="row ">
                     <div class="col-12">
                         <h4 class="title-dashboard">Add Cars</h4>
+                        <% if(msg.length>0){%>
+                            <div class="text-center alert alert-success">
+                                <%= msg %>
+                            </div>
+                            <%}%>
+                                <% if(msg1.length>0){%>
+                                    <div class="text-center alert alert-danger">
+                                        <%= msg1 %>
+                                    </div>
+                                    <%}%>
                     </div>
                 </div>
                 <div class="themesflat-container">
                     <div class="tf-add-cart">
-                        <form action="/" id="submit-add-cart" class="form-add-cart needs-validation" novalidate>
+                        <form action="/admin/carInsert" method="post" id="submit-add-cart"
+                            class="form-add-cart needs-validation" novalidate>
                             <fieldset id="information" class="mb-60">
                                 <div class="inner-title mb-30">
                                     <span class="sub-title">Add Your Car Today</span>
@@ -20,35 +31,34 @@
                                     <div class="tfad-listing-title mb-30 col-md-8">
                                         <div class="form-group">
                                             <label>Listing Title (*)</label>
-                                            <input type="text" id="listing-title" class="form-control"
-                                                name="listing-title" placeholder="Enter title here" value="">
+                                            <input type="text" id="listing-title" class="form-control" name="cname"
+                                                placeholder="Enter title here" value="">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-4">
                                         <label>Listing Brand (*)</label>
                                         <div class="group-select">
-                                            <div class="nice-select" tabindex="0"><span class="current">Select
+                                            <select class="nice-select" tabindex="0" name="cbrand"><span class="current">Select
                                                     Brand</span>
-                                                <ul class="list">
+                                               
+                                                    <option value="" class="current">Select</option>
                                                     <% brand.forEach((item)=>{ %>
-                                                        <li data-value class="option selected">
+                                                        <option data-value class="option selected">
                                                             <%= item.brand %>
-                                                        </li>
+                                                        </option>
 
                                                         <% }) %>
-
-
-                                                </ul>
-                                            </div>
+                                                
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="tfad-listing-title mb-30 col-md-12">
                                         <div class="form-group">
-                                            <label>Listing Overview (*)</label>
+                                            <label>Listing Discription (*)</label>
                                             <input type="text" id="listing-title" class="form-control"
-                                                name="listing-title" placeholder="Enter title here" value="">
+                                                name="discription" placeholder="Enter Discription here" value="">
                                         </div>
                                     </div>
 
@@ -56,20 +66,21 @@
                                     <div class="tfad-listing-title mb-30 col-md-8">
                                         <div class="form-group">
                                             <label>Price Per Day(in INR)*</label>
-                                            <input type="text" id="listing-title" class="form-control"
-                                                name="listing-title" placeholder="Enter title here" value="">
+                                            <input type="text" id="listing-title" class="form-control" name="price"
+                                                placeholder="Enter Price here" value="">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-4">
                                         <label>Select Fuel type (*)</label>
                                         <div class="group-select">
-                                            <div class="nice-select" tabindex="0"><span class="current">Select</span>
-                                                <ul class="list">
-                                                    <li data-value class="option selected">Petrol</li>
-                                                    <li data-value="3 Series" class="option">Deasel</li>
-                                                    <li data-value="3 Series" class="option">Electric</li>
-                                                </ul>
+                                            <div class="group-select">
+                                                <select name="fueltype" tabindex="0" class="nice-select">
+                                                    <option value="" class="current">Select</option>
+                                                    <option value="Petrol" class="option selected">Petrol</option>
+                                                    <option value="Diesel" class="option selected">Diesel</option>
+                                                    <option value="Electric" class="option selected">Electric</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -77,8 +88,8 @@
                                     <div class="tfad-listing-title mb-30 col-md-6">
                                         <div class="form-group">
                                             <label>Model Year(*)</label>
-                                            <input type="text" id="listing-title" class="form-control"
-                                                name="listing-title" placeholder="Enter title here" value="">
+                                            <input type="text" id="listing-title" class="form-control" name="modelyear"
+                                                placeholder="Enter Year here" value="">
                                         </div>
                                     </div>
 
@@ -86,7 +97,7 @@
                                         <div class="form-group">
                                             <label>Seat Capacity(*)</label>
                                             <input type="text" id="listing-title" class="form-control"
-                                                name="listing-title" placeholder="Enter title here" value="">
+                                                name="seatcapacity" placeholder="Enter Capacity here" value="">
                                         </div>
                                     </div>
 
@@ -105,18 +116,18 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="front" type="checkbox" name="check" value="check">
-                                                    <label for="front">A/C: Front</label>
+                                                    <input id="front" type="checkbox" name="AC" value="check">
+                                                    <label for="front">Air Conditioner</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="rear" type="checkbox" name="check" value="check">
-                                                    <label for="rear">A/C: Rear</label>
+                                                    <input id="rear" type="checkbox" name="PS" value="check">
+                                                    <label for="rear">Power Streering</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="camera" type="checkbox" name="check" value="check">
-                                                    <label for="camera">Backup Camera</label>
+                                                    <input id="camera" type="checkbox" name="cdplayer" value="check">
+                                                    <label for="camera">CD Player</label>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -124,16 +135,16 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="stereo" type="checkbox" name="check" value="check">
-                                                    <label for="stereo">AM/FM Stereo</label>
+                                                    <input id="stereo" type="checkbox" name="PDL" value="check">
+                                                    <label for="stereo">Power Door Lock</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="cd" type="checkbox" name="check" value="check">
-                                                    <label for="cd">CD Player</label>
+                                                    <input id="cd" type="checkbox" name="airbagD" value="check">
+                                                    <label for="cd">Airbag: Driver</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="dvd" type="checkbox" name="check" value="check">
-                                                    <label for="dvd">DVD System</label>
+                                                    <input id="dvd" type="checkbox" name="CL" value="check">
+                                                    <label for="dvd">Central Lock</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -142,46 +153,46 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="driver" type="checkbox" name="check" value="check">
-                                                    <label for="driver">Airbag: Driver</label>
+                                                    <input id="driver" type="checkbox" name="ABT" value="check">
+                                                    <label for="driver">Antilock Bracking System</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="passenger" type="checkbox" name="check" value="check">
+                                                    <input id="passenger" type="checkbox" name="airbagP" value="check">
                                                     <label for="passenger">Airbag: Passenger</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="brakes" type="checkbox" name="check" value="check">
-                                                    <label for="brakes">Antilock Brakes</label>
+                                                    <input id="brakes" type="checkbox" name="CS" value="check">
+                                                    <label for="brakes">Crash Sensor</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="listing-feature-item">
-                                        <div class="form-group">                                           
+                                        <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="power" type="checkbox" name="check" value="check">
+                                                    <input id="power" type="checkbox" name="PW" value="check">
                                                     <label for="power">Power Windows</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="defroster" type="checkbox" name="check" value="check">
-                                                    <label for="defroster">Windows Defroster</label>
+                                                    <input id="defroster" type="checkbox" name="BA" value="check">
+                                                    <label for="defroster">Brake Assist</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="rear-window" type="checkbox" name="check" value="check">
-                                                    <label for="rear-window">Rear Window</label>
+                                                    <input id="rear-window" type="checkbox" name="LS" value="check">
+                                                    <label for="rear-window">Leather Seats</label>
                                                 </div>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </fieldset>
 
 
-                            
-                            <fieldset id="upload-media" class="pd-bg">
+
+                            <!-- <fieldset id="upload-media" class="pd-bg">
                                 <div class="inner-title mb-30">
                                     <span class="sub-title">Media</span>
                                     <h3 class="title">Upload Your Photos</h3>
@@ -225,14 +236,67 @@
                                 </div>
                                 <p class="one-photo text-red">*You must upload at least one photo</p>
                             </fieldset>
-                            
-                            
+                             -->
+
                             <fieldset>
                                 <button type="submit" class="button-save-listing">Add
                                     Car</button>
                             </fieldset>
                         </form>
                     </div>
+                </div>
+                <br><br><br><br><br>
+
+                <!--Car Table-->
+                <div class="row ">
+                    <div class="col-12">
+
+                        <h4 class="title-dashboard">Car Display</h4>
+
+
+                    </div>
+                    <br><br>
+                    <br><br>
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th colspan="7" class="text-center">Car List</th>
+                            </tr>
+                        </thead>
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Car Name</th>
+                                <th>Brand</th>
+                                <th>Price Per Day</th>
+                                <th>Fuel Type</th>
+                                <th>Model Year</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <% car.forEach((c,index)=>{ %>
+                                <tr>
+                                    <td><%= index+1 %></td>
+                                    <td><%= c.cname %></td>
+                                    <td><%= c.cbrand %></td>
+                                    <td><%= c.price %></td>
+                                    <td><%= c.fueltype %></td>
+                                    <td><%= c.modelyear %></td>
+                                    <td>
+                                        <a href="/admin/editcardetail/<%= c._id %>" class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="/admin/deletecardetail/<%= c._id %>" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+
+                            <%})%>
+                            
+                                
+                        </tbody>
+                    </table>
+
+
                 </div>
 
 

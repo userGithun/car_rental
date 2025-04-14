@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cloudinary = require("cloudinary");
 const BrandModel = require('../model/brand')
+const CarModel = require('../model/car')
 
 
 // Configuration
@@ -16,12 +17,14 @@ cloudinary.config({
 class FrontController {
   static home = async (req, res) => {
     const brand =await BrandModel.find().limit(6)
+    const car = await CarModel.find().limit(6)
     // console.log(brand)
     try {
       res.render("home", {
         msg: req.flash("error"),
         msg1: req.flash("success"),
-        brand:brand
+        brand:brand,
+        car:car
       });
     } catch (error) {
       console.log(error);

@@ -3,6 +3,7 @@ const FrontController = require("../controller/FrontController");
 const AdminController = require("../controller/admin/AdminController");
 const BrandController = require("../controller/admin/BrandController");
 const checkAuth = require("../middleware/auth");
+const CarController = require("../controller/admin/CarController");
 const route = express.Router();
 
 
@@ -16,7 +17,7 @@ route.get('/logout',FrontController.logout)
 
 ///////////    userInserts   ///////////
 //contact
-route.post('/contactInsert',checkAuth,FrontController.contactInsert)
+route.post('/contactInsert',FrontController.contactInsert)
 
 
 //admin
@@ -28,6 +29,10 @@ route.post('/admin/brandInsert',BrandController.brandInsert)
 route.get('/admin/deletebrand/:id',BrandController.brand_delete)
 route.get('/admin/editbrand/:id',BrandController.brand_edit)
 route.post('/admin/brandupdate/:id',BrandController.brand_update)
+
+//////////      CarInsert   ////////////
+route.post('/admin/carinsert',CarController.carInsert)
+route.get('/admin/deletecardetail/:id',CarController.deleteCarDetail)
 
 
 module.exports = route;

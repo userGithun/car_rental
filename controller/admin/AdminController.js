@@ -1,5 +1,6 @@
 const ContactModel = require('../../model/contact')
 const BrandModel = require('../../model/brand')
+const CarModel = require('../../model/car')
 
 class AdminController {
     static dashboard = async (req,res)=>{
@@ -14,7 +15,9 @@ class AdminController {
     static addcar = async (req,res)=>{
         try {
             const brand =await BrandModel.find()
-            res.render('admin/addcar',{brand:brand})
+            const car = await CarModel.find()
+
+            res.render('admin/addcar',{brand:brand,car:car ,msg:req.flash('success'),msg1:req.flash('error')})
         } catch (error) {
             console.log(error)
         }
