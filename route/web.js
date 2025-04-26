@@ -10,7 +10,7 @@ const route = express.Router();
 route.get('/',FrontController.home)
 route.get('/car-list',FrontController.car_list)
 route.get('/contact-us',FrontController.contact)
-route.get('/listing-details',FrontController.listing_details)
+route.get('/listing-details/:id',FrontController.listing_details)
 route.post('/registrationInsert',FrontController.registrationInsert)
 route.post('/verifyLogin',FrontController.Login)
 route.get('/logout',FrontController.logout)
@@ -33,6 +33,7 @@ route.post('/admin/brandupdate/:id',BrandController.brand_update)
 //////////      CarInsert   ////////////
 route.post('/admin/carinsert',CarController.carInsert)
 route.get('/admin/deletecardetail/:id',CarController.deleteCarDetail)
-
+route.get('/admin/editcardetail/:id',CarController.editcar)
+route.post('/admin/editcardetail/:id',CarController.carUpdateInsert)
 
 module.exports = route;

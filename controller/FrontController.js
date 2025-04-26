@@ -44,7 +44,9 @@ class FrontController {
   };
   static listing_details = async (req, res) => {
     try {
-      res.render("listing-details");
+      const id = req.params.id
+      const cars = await CarModel.findById(id).limit(6)
+      res.render("listing-details",{car:cars});
     } catch (error) {
       console.log(error);
     }

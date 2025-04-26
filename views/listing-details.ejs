@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
@@ -17,15 +16,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/images/logo/logo.png">
+    <link rel="shortcut icon" href="../assets/images/logo/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/images/logo/logo.png">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/map.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/nice-select.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css.map">
+    <link rel="stylesheet" type="text/css" href="../assets/css/map.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css.map">
 
 
 </head>
@@ -53,7 +52,7 @@
                                 <div class="inner-container flex justify-space align-center">
                                     <!-- Logo Box -->
                                     <div class="logo-box flex">
-                                        <div class="logo"><a href="/"><img src="assets/images/logo/logo2@.png"
+                                        <div class="logo"><a href="/"><img src="../public/assets/images/logo/logo2@.png"
                                                     alt="Logo"></a></div>
                                     </div>
                                     <div class="nav-outer flex align-center">
@@ -62,14 +61,14 @@
                                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                                                 <ul class="navigation clearfix">
                                                     <li class="">
-                                                        <a href="/">Home</a>                                                      
+                                                        <a href="/">Home</a>
                                                     </li>
 
                                                     <li class="current">
-                                                        <a href="/car-list">Cars</a>                                                       
+                                                        <a href="/car-list">Cars</a>
                                                     </li>
-                                                    
-                                                    <li>
+
+                                                    <li class="">
                                                         <a href="/contact-us">Contact us </a>
                                                     </li>
                                                 </ul>
@@ -81,13 +80,13 @@
                                         <div class="register ml--18">
                                             <div class="flex align-center">
                                                 <a data-bs-toggle="modal" href="#exampleModalToggle" role="button"><img
-                                                        src="assets/images/avatar/avt.png" alt=""></a>
+                                                        src="" alt=""></a>
                                             </div>
                                         </div>
                                         <div class="flat-bt-top sc-btn-top ml--20 ">
-                                            <a class="btn-icon-list" href="/car-list">
-                                                <span>Listing Yours</span>
-                                                <i class="icon-add-button-1"></i>
+                                            <a class="btn-icon-list" href="/logout">
+                                                <span>Logout</span>
+
                                             </a>
                                         </div>
                                     </div>
@@ -106,20 +105,20 @@
                     <div class="menu-backdrop"></div>
                     <nav class="menu-box">
                         <div class="nav-logo">
-                            <a href="/"><img src="assets/images/logo/logo2@.png" alt="Logo Motorx"></a>
+                            <a href="/"><img src="../assets/images/logo/logo2@.png" alt="Logo Motorx"></a>
                         </div>
                         <div class="bottom-canvas">
                             <div class="menu-outer">
                                 <ul class="navigation clearfix">
                                     <li class="">
                                         <a href="/">Home</a>
-                                        
+
                                     </li>
                                     <li class="current">
                                         <a href="/car-list">Cars</a>
-                                        
+
                                     </li>
-                                                                        
+
                                     <li class="">
                                         <a href="/contact-us">Contact Us</a>
 
@@ -145,8 +144,6 @@
                 <!-- End Mobile Menu -->
             </header>
             <!-- End Main Header -->
-
-            <!--##############          listing-details         #####################-->
 
             <!-- Breakcrumb -->
             <div class="widget-breakcrumb">
@@ -174,22 +171,24 @@
                                         </div>
                                         <div class="info flex">
                                             <span>Make:</span>
-                                            <span class="fw-4">Toyota</span>
+                                            <span class="fw-4"> <%= car.cbrand %></span>
                                         </div>
                                         <div class="info flex">
                                             <span>Model:</span>
-                                            <span class="fw-4">XC60</span>
+                                            <span class="fw-4"> <%= car.modelyear %></span>
                                         </div>
                                         <div class="info flex">
                                             <span>Body:</span>
                                             <span class="fw-4">Sedan</span>
                                         </div>
                                     </div>
-                                    <div class="title-heading">Chevrolet Suburban 2021</div>
+                                    <div class="title-heading">
+                                        <%= car.cname %>
+                                    </div>
 
                                     <div class="text-address">
                                         <i class="icon-map-1-1"></i>
-                                        <p>Boston, MA, United States</p>
+                                        <p><%= car.location %></p>
                                     </div>
                                 </div>
                                 <div class="box-2 t-al-right">
@@ -204,8 +203,10 @@
                                         </a>
                                     </div>
                                     <div class="price-wrap flex">
-                                        <p class="price-sale">$46,000</p>
-                                        <p class="price">$48,000</p>
+                                        <p class="price-sale">
+                                            ₹ <%= car.price %>
+                                        </p>
+                                        <p class="price">₹ 3100/-</p>
                                     </div>
                                 </div>
                             </div>
@@ -213,78 +214,37 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
+
                             <div class="gallary-property-details">
                                 <div class="swiper property-gallary2">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/slide1.jpg" alt="Image">
-                                        </div>
+                                        <% car.image.forEach(function(img) { %>
+                                            <div class="swiper-slide"
+                                                style="width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px;">
+                                                <img src="<%= img.url %>" alt="Image"
+                                                    style="width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 10px;">
+                                            </div>
+                                            <% }) %>
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                 </div>
-                                <div  class="swiper property-gallary">
+
+                                <div class="swiper property-gallary">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum1.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum2.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum3.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum4.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum5.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum6.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum7.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum5.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum2.jpg" alt="Image">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="./assets/images/gallary/thum3.jpg" alt="Image">
-                                        </div>
+                                        <% car.image.forEach(function(img) { %>
+                                            <div class="swiper-slide"
+                                                style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px;">
+                                                <img src="<%= img.url %>" alt="Image"
+                                                    style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 10px;">
+                                            </div>
+                                            <% }) %>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
                     </div>
                     <div class="row">
@@ -292,20 +252,7 @@
                             <div class="post-property">
                                 <div class="wrap-description wrap-style">
                                     <h4 class="title">Description</h4>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but majority have
-                                        suffered teration in some form, by injected humour, or randomised words which
-                                        don't look even slight believable. If you are going to use a passa There
-                                        are many variations of passages of Lorem Ipsum available, but majority have
-                                        suffered teration in some form look even
-                                        by injected humour, or randomised There are many variations of passages of Lorem
-                                        Ipsum available, but majority
-                                        have suffered teration in some form, by injected humour, or randomised words
-                                        which don't look even slight believable.
-                                        If you are going to use a passa There are many variations of passages of Lorem
-                                        Ipsum available, but majority
-                                        have suffered teration in some form, by injected humour, or randomised many
-                                        variations of passages of Lorem Ipsum available, but majority There are many
-                                        variations of passages of </p>
+                                    <p><%= car.discription %></p>
                                 </div>
                                 <div class="wrap-car-overview wrap-style">
                                     <h4 class="title">Car Overview</h4>
@@ -318,32 +265,12 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Condition:</span>
-                                                        <p class="listing-info-value">New</p>
+                                                        <p class="listing-info-value"><%= car.condition %></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-md-6 item">
-                                                <div class="inner listing-infor-box">
-                                                    <div class="icon">
-                                                        <i class="icon-Group-1000002834"></i>
-                                                    </div>
-                                                    <div class="content-listing-info">
-                                                        <span class="listing-info-title">Cylinders: </span>
-                                                        <p class="listing-info-value">6</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-md-6 item">
-                                                <div class="inner listing-infor-box">
-                                                    <div class="icon">
-                                                        <i class=" icon-Vector-13"></i>
-                                                    </div>
-                                                    <div class="content-listing-info">
-                                                        <span class="listing-info-title">Stock Number:</span>
-                                                        <p class="listing-info-value">N8990</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
+                                            
                                             <div class="col-xl-6 col-md-6 item">
                                                 <div class="inner listing-infor-box">
                                                     <div class="icon">
@@ -351,21 +278,11 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Fuel Type:</span>
-                                                        <p class="listing-info-value">Petrol</p>
+                                                        <p class="listing-info-value"><%= car.fueltype %></p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-md-6 item">
-                                                <div class="inner listing-infor-box">
-                                                    <div class="icon">
-                                                        <i class="icon-Vector-13"></i>
-                                                    </div>
-                                                    <div class="content-listing-info">
-                                                        <span class="listing-info-title">VIN Number:</span>
-                                                        <p class="listing-info-value">84HKFI792KJDC</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="col-xl-6 col-md-6 item">
                                                 <div class="inner listing-infor-box">
                                                     <div class="icon">
@@ -373,7 +290,7 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Doors:</span>
-                                                        <p class="listing-info-value">4</p>
+                                                        <p class="listing-info-value"><%= car.door %></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -384,7 +301,7 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Year:</span>
-                                                        <p class="listing-info-value">2023</p>
+                                                        <p class="listing-info-value"><%= car.modelyear %><p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -395,7 +312,7 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Color:</span>
-                                                        <p class="listing-info-value">Black</p>
+                                                        <p class="listing-info-value"><%= car.color %><p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -406,7 +323,7 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Mileage: </span>
-                                                        <p class="listing-info-value">28,000 miles</p>
+                                                        <p class="listing-info-value"><%= car.mileage %></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -417,7 +334,7 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Seats:</span>
-                                                        <p class="listing-info-value">5</p>
+                                                        <p class="listing-info-value"><%= car.seatcapacity %></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -428,43 +345,13 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Transmission :</span>
-                                                        <p class="listing-info-value">Automatic</p>
+                                                        <p class="listing-info-value"><%= car.transmission %><p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-md-6 item">
-                                                <div class="inner listing-infor-box">
-                                                    <div class="icon">
-                                                        <i class="icon-Group-31"></i>
-                                                    </div>
-                                                    <div class="content-listing-info">
-                                                        <span class="listing-info-title">City MPG:</span>
-                                                        <p class="listing-info-value">18</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-md-6 item">
-                                                <div class="inner listing-infor-box">
-                                                    <div class="icon">
-                                                        <i class="icon-engine-1"></i>
-                                                    </div>
-                                                    <div class="content-listing-info">
-                                                        <span class="listing-info-title">Engine Size:</span>
-                                                        <p class="listing-info-value">4.8L</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-md-6 item">
-                                                <div class="inner listing-infor-box">
-                                                    <div class="icon">
-                                                        <i class="icon-Group-31"></i>
-                                                    </div>
-                                                    <div class="content-listing-info">
-                                                        <span class="listing-info-title">Highway MPG:</span>
-                                                        <p class="listing-info-value">28</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
+                                            
+                                            
                                             <div class="col-xl-6 col-md-6 item">
                                                 <div class="inner listing-infor-box">
                                                     <div class="icon">
@@ -472,7 +359,7 @@
                                                     </div>
                                                     <div class="content-listing-info">
                                                         <span class="listing-info-title">Driver type: </span>
-                                                        <p class="listing-info-value">2WD</p>
+                                                        <p class="listing-info-value"><%= car.drivertype %></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -550,46 +437,9 @@
                                         </svg>
                                         <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
                                     </div>
-                                    <div class="map2">
-                                        <div id="map2"></div>
-                                    </div>
+
                                 </div>
-                                <div class="wrap-car-calculator wrap-style">
-                                    <h4 class="title">Loan Calculator</h4>
-                                    <form action="/" id="calculator">
-                                        <div class="input-wrap">
-                                            <fieldset>
-                                                <label>Vehicle Price</label>
-                                                <input type="tel" placeholder="$250000">
-                                            </fieldset>
-                                            <fieldset>
-                                                <label>Interest Rate</label>
-                                                <input type="tel" placeholder="$250000">
-                                            </fieldset>
-                                        </div>
-                                        <div class="input-wrap">
-                                            <fieldset>
-                                                <label>Down Payment</label>
-                                                <input type="tel" placeholder="$250000">
-                                            </fieldset>
-                                            <fieldset>
-                                                <label>Loan Duration</label>
-                                                <input type="tel" placeholder="$250000">
-                                            </fieldset>
-                                        </div>
-                                        <div class="btn-wrap-form mt-45">
-                                            <div class="btn-main">
-                                                <button class="button_main_inner" type="submit">
-                                                    Calculate Payment
-                                                </button>
-                                            </div>
-                                            <a href="#" class="btn-reset">
-                                                <i class="icon-rotate-left-circular-arrow-interface-symbol-1"></i>
-                                                Reset All
-                                            </a>
-                                        </div>
-                                    </form>
-                                </div>
+                                
                                 <div class="wrap-car-review wrap-style">
                                     <h4 class="title">Customer Review</h4>
                                     <div class="listing-customer-review">
@@ -626,8 +476,8 @@
                                                         </div>
                                                     </div>
                                                     <div class=" bg-primary overall-rating-detail-progress"
-                                                    role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
+                                                        role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                             <div class="overall-rating-detail-item">
@@ -644,10 +494,10 @@
                                                             <span>5.0</span>
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class=" bg-primary overall-rating-detail-progress"
-                                                    role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
+                                                        role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                             <div class="overall-rating-detail-item">
@@ -665,8 +515,8 @@
                                                         </div>
                                                     </div>
                                                     <div class=" bg-primary overall-rating-detail-progress"
-                                                    role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
+                                                        role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                             <div class="overall-rating-detail-item">
@@ -684,8 +534,8 @@
                                                         </div>
                                                     </div>
                                                     <div class=" bg-primary overall-rating-detail-progress"
-                                                    role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
+                                                        role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -693,7 +543,7 @@
                                     <ul class="reviews-list">
                                         <li class="review-item">
                                             <div class="review-media">
-                                                <img src="./assets/images/avatar/avt-review.jpg" alt="image">
+                                                <img src="../assets/images/avatar/avt-review.jpg" alt="image">
                                             </div>
                                             <div class="review-body">
                                                 <div class="media-heading d-flex">
@@ -720,14 +570,14 @@
                                                     non justo consectetur, cursus ante, tincidunt sapien. Nulla quis
                                                 </p>
                                                 <div class="image-review d-flex">
-                                                    <img src="./assets/images/page/rivew-custom.jpg" alt="">
-                                                    <img src="./assets/images/page/rivew-custom.jpg" alt="">
+                                                    <img src="../assets/images/page/rivew-custom.jpg" alt="">
+                                                    <img src="../assets/images/page/rivew-custom.jpg" alt="">
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="review-item">
                                             <div class="review-media">
-                                                <img src="./assets/images/avatar/avt-review.jpg" alt="image">
+                                                <img src="../assets/images/avatar/avt-review.jpg" alt="image">
                                             </div>
                                             <div class="review-body">
                                                 <div class="media-heading d-flex">
@@ -852,7 +702,7 @@
                             <div class="author-contact-listing-wrap">
                                 <div class="author-contact-wrap">
                                     <div class="author-contact-avatar">
-                                        <img src="./assets/images/avatar/avt-admin.png" title="image">
+                                        <img src="../assets/images/avatar/avt-admin.png" title="image">
                                     </div>
                                     <div class="author-contact-info">
                                         <h4 class="name"> Admin </h4>
@@ -903,22 +753,22 @@
                                         <div class="wrap-hover-listing">
                                             <div class="listing-item active" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car5.jpg"
+                                                    <img src="../assets/images/car-list/car5.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car11.jpg"
+                                                    <img src="../assets/images/car-list/car11.jpg"
                                                         class="swiper-image lazy tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car12.jpg"
+                                                    <img src="../assets/images/car-list/car12.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                     <div class="overlay-limit">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img"
+                                                        <img src="../assets/images/car-list/img.png" class="icon-img"
                                                             alt="icon-map">
                                                         <p>2 more photos</p>
                                                     </div>
@@ -938,7 +788,8 @@
                                 </div>
                                 <div class="listing-item-content">
                                     <div class="listing-top-content">
-                                        <h6 class="title"><a href="/listing-details"><a href="/listing-details">Mercedez benz - c class</a></a></h6>
+                                        <h6 class="title"><a href="/listing-details"><a href="/listing-details">Mercedez
+                                                    benz - c class</a></a></h6>
                                         <div class="review-wrap">
                                             <div class="rating">
                                                 <i class="icon-Vector3"></i>
@@ -979,14 +830,14 @@
                                                 <a href="#">
                                                     <i class="icon-heart-1-1"></i>
                                                     <span>Favorite</span>
-                                                </a>                           
+                                                </a>
                                             </li>
                                             <li>
                                                 <a href="#">
                                                     <i class="icon-shuffle-2-11"></i>
-                                                <span>Compare</span>
+                                                    <span>Compare</span>
                                                 </a>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>
@@ -1010,22 +861,22 @@
                                         <div class="wrap-hover-listing">
                                             <div class="listing-item active" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car16.jpg"
+                                                    <img src="../assets/images/car-list/car16.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car11.jpg"
+                                                    <img src="../assets/images/car-list/car11.jpg"
                                                         class="swiper-image lazy tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car12.jpg"
+                                                    <img src="../assets/images/car-list/car12.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                     <div class="overlay-limit">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img"
+                                                        <img src="../assets/images/car-list/img.png" class="icon-img"
                                                             alt="icon-map">
                                                         <p>2 more photos</p>
                                                     </div>
@@ -1045,7 +896,8 @@
                                 </div>
                                 <div class="listing-item-content">
                                     <div class="listing-top-content">
-                                        <h6 class="title"><a href="/listing-details">Mercedez benz - c class</a></h6>
+                                        <h6 class="title"><a href="/listing-details">Mercedez benz - c class</a>
+                                        </h6>
                                         <div class="review-wrap">
                                             <div class="rating">
                                                 <i class="icon-Vector3"></i>
@@ -1086,14 +938,14 @@
                                                 <a href="#">
                                                     <i class="icon-heart-1-1"></i>
                                                     <span>Favorite</span>
-                                                </a>                           
+                                                </a>
                                             </li>
                                             <li>
                                                 <a href="#">
                                                     <i class="icon-shuffle-2-11"></i>
-                                                <span>Compare</span>
+                                                    <span>Compare</span>
                                                 </a>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>
@@ -1117,22 +969,22 @@
                                         <div class="wrap-hover-listing">
                                             <div class="listing-item active" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car23.jpg"
+                                                    <img src="../assets/images/car-list/car23.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car11.jpg"
+                                                    <img src="../assets/images/car-list/car11.jpg"
                                                         class="swiper-image lazy tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car12.jpg"
+                                                    <img src="../assets/images/car-list/car12.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                     <div class="overlay-limit">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img"
+                                                        <img src="../assets/images/car-list/img.png" class="icon-img"
                                                             alt="icon-map">
                                                         <p>2 more photos</p>
                                                     </div>
@@ -1152,7 +1004,8 @@
                                 </div>
                                 <div class="listing-item-content">
                                     <div class="listing-top-content">
-                                        <h6 class="title"><a href="/listing-details">Mercedez benz - c class</a></h6>
+                                        <h6 class="title"><a href="/listing-details">Mercedez benz - c class</a>
+                                        </h6>
                                         <div class="review-wrap">
                                             <div class="rating">
                                                 <i class="icon-Vector3"></i>
@@ -1193,14 +1046,14 @@
                                                 <a href="#">
                                                     <i class="icon-heart-1-1"></i>
                                                     <span>Favorite</span>
-                                                </a>                           
+                                                </a>
                                             </li>
                                             <li>
                                                 <a href="#">
                                                     <i class="icon-shuffle-2-11"></i>
-                                                <span>Compare</span>
+                                                    <span>Compare</span>
                                                 </a>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>
@@ -1224,22 +1077,22 @@
                                         <div class="wrap-hover-listing">
                                             <div class="listing-item active" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car8.jpg"
+                                                    <img src="../assets/images/car-list/car8.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car11.jpg"
+                                                    <img src="../assets/images/car-list/car11.jpg"
                                                         class="swiper-image lazy tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car12.jpg"
+                                                    <img src="../assets/images/car-list/car12.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                     <div class="overlay-limit">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img"
+                                                        <img src="../assets/images/car-list/img.png" class="icon-img"
                                                             alt="icon-map">
                                                         <p>2 more photos</p>
                                                     </div>
@@ -1259,7 +1112,8 @@
                                 </div>
                                 <div class="listing-item-content">
                                     <div class="listing-top-content">
-                                        <h6 class="title"><a href="/listing-details">Mercedez benz - c class</a></h6>
+                                        <h6 class="title"><a href="/listing-details">Mercedez benz - c class</a>
+                                        </h6>
                                         <div class="review-wrap">
                                             <div class="rating">
                                                 <i class="icon-Vector3"></i>
@@ -1300,14 +1154,14 @@
                                                 <a href="#">
                                                     <i class="icon-heart-1-1"></i>
                                                     <span>Favorite</span>
-                                                </a>                           
+                                                </a>
                                             </li>
                                             <li>
                                                 <a href="#">
                                                     <i class="icon-shuffle-2-11"></i>
-                                                <span>Compare</span>
+                                                    <span>Compare</span>
                                                 </a>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>
@@ -1331,22 +1185,22 @@
                                         <div class="wrap-hover-listing">
                                             <div class="listing-item active" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car8.jpg"
+                                                    <img src="../assets/images/car-list/car8.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car11.jpg"
+                                                    <img src="../assets/images/car-list/car11.jpg"
                                                         class="swiper-image lazy tfcl-light-gallery" alt="images">
                                                 </div>
                                             </div>
                                             <div class="listing-item view-gallery" title="Lexus LC Hybrid 2024">
                                                 <div class="images">
-                                                    <img src="./assets/images/car-list/car12.jpg"
+                                                    <img src="../assets/images/car-list/car12.jpg"
                                                         class="swiper-image tfcl-light-gallery" alt="images">
                                                     <div class="overlay-limit">
-                                                        <img src="./assets/images/car-list/img.png" class="icon-img"
+                                                        <img src="../assets/images/car-list/img.png" class="icon-img"
                                                             alt="icon-map">
                                                         <p>2 more photos</p>
                                                     </div>
@@ -1366,7 +1220,8 @@
                                 </div>
                                 <div class="listing-item-content">
                                     <div class="listing-top-content">
-                                        <h6 class="title"><a href="/listing-details">Mercedez benz - c class</a></h6>
+                                        <h6 class="title"><a href="/listing-details">Mercedez benz - c class</a>
+                                        </h6>
                                         <div class="review-wrap">
                                             <div class="rating">
                                                 <i class="icon-Vector3"></i>
@@ -1407,14 +1262,14 @@
                                                 <a href="#">
                                                     <i class="icon-heart-1-1"></i>
                                                     <span>Favorite</span>
-                                                </a>                           
+                                                </a>
                                             </li>
                                             <li>
                                                 <a href="#">
                                                     <i class="icon-shuffle-2-11"></i>
-                                                <span>Compare</span>
+                                                    <span>Compare</span>
                                                 </a>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>
@@ -1439,5 +1294,17 @@
             </div>
             <!-- related-single-listing -->
 
-
-           <%- include('./footer.ejs') %>
+            <!-- Javascript -->
+            <script src="../assets/js/jquery.min.js"></script>
+            <script src="../assets/js/bootstrap.min.js"></script>
+            <script src="../assets/js/jquery.nice-select.min.js"></script>
+            <script src="../assets/js/jquery.nice-select.min.js"></script>
+            <script src="../assets/js/swiper-bundle.min.js"></script>
+            <script src="../assets/js/swiper.js"></script>
+            <script src="../assets/js/jquery-countTo.js"></script>
+            <script src="../assets/js/nouislider.min.js"></script>
+            <script src="../assets/js/price-ranger.js"></script>
+            <script src="../assets/js/magnific-popup.min.js"></script>
+            <script src="../assets/js/wow.min.js"></script>
+            <script src="../assets/js/main.js"></script>
+            <%- include('./footer.ejs') %>

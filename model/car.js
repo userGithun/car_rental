@@ -1,73 +1,111 @@
 const mongoose = require('mongoose')
 
 
-const CarSchema =new mongoose.Schema({
-    cname:{
-        type:String,
-        required:true
+const CarSchema = new mongoose.Schema({
+    cname: {
+        type: String,
+        required: true
     },
-    cbrand:{
-        type:String,
-        required:true
+    cbrand: {
+        type: String,
+        required: true
     },
-    discription:{
-        type:String,
-        required:true
+    discription: {
+        type: String,
+        required: true
     },
-    price:{
-        type:String,
-        required:true
+    price: {
+        type: String,
+        required: true
     },
-    fueltype:{
-        type:String,
-        required:true
+    fueltype: {
+        type: String,
+        required: true
     },
-    modelyear:{
-        type:String,
-        required:true
+    modelyear: {
+        type: String,
+        required: true
     },
-    seatcapacity:{
-        type:String,
-        required:true
+    mileage: {
+        type: String,
+        required: true
     },
-    AC:{
-        type:String,
+    seatcapacity: {
+        type: String,
+        required: true
     },
-    PS:{
-        type:String,
+    color: {
+        type: String,
+        required: true
     },
-    cdplayer:{
-        type:String,
+    condition: {
+        type: String,
+        required: true
     },
-    PDL:{
-        type:String,
+    transmission: {
+        type: String,
+        required: true
     },
-    airbagD:{
-        type:String,
+    drivertype: {
+        type: String,
+        required: true
     },
-    CL:{
-        type:String,
+    door: {
+        type: String,
+        required: true
     },
-    ABT:{
-        type:String,
+    location:{
+        type: String,
+        required: true
     },
-    airbagP:{
-        type:String,
+    image: [
+        {
+            public_id: {
+                type: String
+            },
+            url: {
+                type: String
+            }
+        }
+    ],
+    AC: {
+        type: String,
     },
-    CS:{
-        type:String,
+    PS: {
+        type: String,
     },
-    PW:{
-        type:String,
+    cdplayer: {
+        type: String,
     },
-    BA:{
-        type:String,
+    PDL: {
+        type: String,
     },
-    LS:{
-        type:String
+    airbagD: {
+        type: String,
+    },
+    CL: {
+        type: String,
+    },
+    ABT: {
+        type: String,
+    },
+    airbagP: {
+        type: String,
+    },
+    CS: {
+        type: String,
+    },
+    PW: {
+        type: String,
+    },
+    BA: {
+        type: String,
+    },
+    LS: {
+        type: String
     }
 
-},{timestamps:true})
+}, { timestamps: true })
 
-const CarModel =new mongoose.model('AddCar',CarSchema) 
-module.exports= CarModel
+const CarModel = new mongoose.model('AddCar', CarSchema)
+module.exports = CarModel

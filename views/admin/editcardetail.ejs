@@ -5,22 +5,13 @@
             <div class="dashboard">
                 <div class="row ">
                     <div class="col-12">
-                        <h4 class="title-dashboard">Add Cars</h4>
-                        <% if(msg.length>0){%>
-                            <div class="text-center alert alert-success">
-                                <%= msg %>
-                            </div>
-                            <%}%>
-                                <% if(msg1.length>0){%>
-                                    <div class="text-center alert alert-danger">
-                                        <%= msg1 %>
-                                    </div>
-                                    <%}%>
+                        <h4 class="title-dashboard">Edit Cars Details</h4>
+                        
                     </div>
                 </div>
                 <div class="themesflat-container">
                     <div class="tf-add-cart">
-                        <form action="/admin/carInsert" enctype="multipart/form-data" method="post" id="submit-add-cart"
+                        <form action="/admin/editcardetail/<%= c._id %>" method="post" id="submit-add-cart"
                             class="form-add-cart needs-validation" novalidate>
                             <fieldset id="information" class="mb-60">
                                 <div class="inner-title mb-30">
@@ -32,9 +23,11 @@
                                         <div class="form-group">
                                             <label>Listing Title (*)</label>
                                             <input type="text" id="listing-title" class="form-control" name="cname"
-                                                placeholder="Enter title here" value="">
+                                                placeholder="Enter title here" value="<%= c.cname %>">
                                         </div>
                                     </div>
+
+                                   
 
                                     <div class="form-group col-md-4">
                                         <label>Listing Brand (*)</label>
@@ -43,7 +36,7 @@
                                                     class="current">Select
                                                     Brand</span>
 
-                                                <option value="" class="current">Select</option>
+                                                <option value="<%= c.cbrand %>" class="current">Select</option>
                                                 <% brand.forEach((item)=>{ %>
                                                     <option data-value class="option selected">
                                                         <%= item.brand %>
@@ -62,7 +55,7 @@
                                         <div class="form-group">
                                             <label>Price Per Day(in INR)*</label>
                                             <input type="text" id="listing-title" class="form-control" name="price"
-                                                placeholder="Enter Price here" value="">
+                                                placeholder="Enter Price here" value="<%= c.price %>">
                                         </div>
                                     </div>
 
@@ -71,7 +64,7 @@
                                         <div class="form-group">
                                             <label>Model Year(*)</label>
                                             <input type="text" id="listing-title" class="form-control" name="modelyear"
-                                                placeholder="Enter Year here" value="">
+                                                placeholder="Enter Year here" value="<%= c.modelyear %>">
                                         </div>
                                     </div>
                                   <!--5-->
@@ -79,7 +72,7 @@
                                         <div class="form-group">
                                             <label>Color*</label>
                                             <div class="group-select">
-                                                <input type="text" name="color" placeholder="Enter Car Color">
+                                                <input type="text" name="color" value="<%= c.color %>" placeholder="Enter Car Color">
                                             </div>
                                         </div>
                                     </div>
@@ -89,8 +82,8 @@
                                         <label>Select Fuel type (*)</label>
                                         <div class="group-select">
                                             <div class="group-select">
-                                                <select name="fueltype" tabindex="0" class="nice-select">
-                                                    <option value="" class="current">Select</option>
+                                                <select name="fueltype" value="" tabindex="0" class="nice-select">
+                                                    <option value="<%= c.fueltype %>" class="current">Select</option>
                                                     <option value="Petrol" class="option selected">Petrol</option>
                                                     <option value="Diesel" class="option selected">Diesel</option>
                                                     <option value="Electric" class="option selected">Electric</option>
@@ -104,8 +97,8 @@
                                     <div class="tfad-listing-title mb-30 col-md-3">
                                         <div class="form-group">
                                             <label>Mileage (*)</label>
-                                            <input type="number" id="listing-title" class="form-control" name="mileage"
-                                                placeholder="Enter Mileage here" value="">
+                                            <input type="number" id="listing-title"  class="form-control" name="mileage"
+                                                placeholder="Enter Mileage here" value="<%= c.mileage %>">
                                         </div>
                                     </div>
 
@@ -114,8 +107,8 @@
                                         <label>Seat Capacity(*)</label>
                                         <div class="group-select">
                                             <div class="group-select">
-                                                <select name="seatcapacity" tabindex="0" class="nice-select">
-                                                    <option value="" class="current">Select</option>
+                                                <select name="seatcapacity" value="" tabindex="0" class="nice-select">
+                                                    <option value="<%= c.seatcapacity %>" class="current">Select</option>
                                                     <option value="1" class="option selected">1</option>
                                                     <option value="2" class="option selected">2</option>
                                                     <option value="3" class="option selected">3</option>
@@ -134,8 +127,8 @@
                                         <label>Condition (*)</label>
                                         <div class="group-select">
                                             <div class="group-select">
-                                                <select name="condition" tabindex="0" class="nice-select">
-                                                    <option value="" class="current">Select</option>
+                                                <select name="condition" value="" tabindex="0" class="nice-select">
+                                                    <option value="<%= c.condition %>" class="current">Select</option>
                                                     <option value="New" class="option selected">New</option>
                                                     <option value="Good" class="option selected">Good</option>
                                                     <option value="Average" class="option selected">Average</option>
@@ -150,8 +143,8 @@
                                         <label>Transmission(*)</label>
                                         <div class="group-select">
                                             <div class="group-select">
-                                                <select name="transmission" tabindex="0" class="nice-select">
-                                                    <option value="" class="current">Select</option>
+                                                <select name="transmission" value="" tabindex="0" class="nice-select">
+                                                    <option value="<%= c.transmission %>" class="current">Select</option>
                                                     <option value="Automatic" class="option selected">Automatic</option>
                                                     <option value="Manual Transmission" class="option selected">Manual Transmission</option>    
                                                 </select>
@@ -164,8 +157,8 @@
                                         <label>Driver Type(*)</label>
                                         <div class="group-select">
                                             <div class="group-select">
-                                                <select name="drivertype" tabindex="0" class="nice-select">
-                                                    <option value="" class="current">Select</option>
+                                                <select name="drivertype" value="" tabindex="0" class="nice-select">
+                                                    <option value="<%= c.drivertype %>" class="current">Select</option>
                                                     <option value="2WD" class="option selected">2WD</option>
                                                     <option value="3WD" class="option selected">3WD</option>    
                                                     <option value="4WD" class="option selected">4WD</option> 
@@ -179,8 +172,8 @@
                                         <label>Doors(*)</label>
                                         <div class="group-select">
                                             <div class="group-select">
-                                                <select name="door" tabindex="0" class="nice-select">
-                                                    <option value="" class="current">Select</option>
+                                                <select name="door" value="" tabindex="0" class="nice-select">
+                                                    <option value="<%= c.door %>" class="current">Select</option>
                                                     <option value="2" class="option selected">2</option>
                                                     <option value="4" class="option selected">4</option>    
                                                      
@@ -194,7 +187,7 @@
                                         <div class="form-group">
                                             <label>Description*</label>
                                             <div class="group-select">
-                                                <textarea id="description" placeholder="Enter Discription here"
+                                                <textarea id="description" value="<%= c.discription %>" placeholder="Enter Discription here"
                                                     style="background-color: white;" name="discription">
                                                 </textarea>
                                             </div>
@@ -206,10 +199,13 @@
                                         <div class="form-group">
                                             <label>Location*</label>
                                             <div class="group-select">
-                                               <input type="text" name="location" placeholder="Enter location.." id="">
+                                               <input type="text" name="location" value="<%= c.location %>" placeholder="Enter location.." id="">
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    
 
                                 </div>
                                 <!--row end-->
@@ -226,15 +222,15 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="front" type="checkbox" name="AC" value="check">
+                                                    <input id="front" type="checkbox" name="AC" value="<%= c.AC %>">
                                                     <label for="front">Air Conditioner</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="rear" type="checkbox" name="PS" value="check">
+                                                    <input id="rear" type="checkbox" name="PS" value="<%= c.PS %>">
                                                     <label for="rear">Power Streering</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="camera" type="checkbox" name="cdplayer" value="check">
+                                                    <input id="camera" type="checkbox" name="cdplayer" value="<%= c.cdplayer %>">
                                                     <label for="camera">CD Player</label>
                                                 </div>
 
@@ -245,15 +241,15 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="stereo" type="checkbox" name="PDL" value="check">
+                                                    <input id="stereo" type="checkbox" name="PDL" value="<%= c.PDL %>">
                                                     <label for="stereo">Power Door Lock</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="cd" type="checkbox" name="airbagD" value="check">
+                                                    <input id="cd" type="checkbox" name="airbagD" value="<%= c.airbagD %>">
                                                     <label for="cd">Airbag: Driver</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="dvd" type="checkbox" name="CL" value="check">
+                                                    <input id="dvd" type="checkbox" name="CL" value="<%= c.CL %>">
                                                     <label for="dvd">Central Lock</label>
                                                 </div>
                                             </div>
@@ -263,15 +259,15 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="driver" type="checkbox" name="ABT" value="check">
+                                                    <input id="driver" type="checkbox" name="ABT" value="check <%= c.ABT %>">
                                                     <label for="driver">Antilock Bracking System</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="passenger" type="checkbox" name="airbagP" value="check">
+                                                    <input id="passenger" type="checkbox" name="airbagP" value="<%= c.airbagP %>">
                                                     <label for="passenger">Airbag: Passenger</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="brakes" type="checkbox" name="CS" value="check">
+                                                    <input id="brakes" type="checkbox" name="CS" value="<%= c.CS %>">
                                                     <label for="brakes">Crash Sensor</label>
                                                 </div>
                                             </div>
@@ -281,15 +277,15 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="power" type="checkbox" name="PW" value="check">
+                                                    <input id="power" type="checkbox" name="PW" value="<%= c.PW %>">
                                                     <label for="power">Power Windows</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="defroster" type="checkbox" name="BA" value="check">
+                                                    <input id="defroster" type="checkbox" name="BA" value="<%= c.BA %>">
                                                     <label for="defroster">Brake Assist</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="rear-window" type="checkbox" name="LS" value="check">
+                                                    <input id="rear-window" type="checkbox" name="LS" value="<%= c.LS %>">
                                                     <label for="rear-window">Leather Seats</label>
                                                 </div>
 
@@ -302,137 +298,59 @@
 
 
 
-                            <fieldset id="upload-media" class="pd-bg">
+                            <!-- <fieldset id="upload-media" class="pd-bg">
                                 <div class="inner-title mb-30">
                                     <span class="sub-title">Media</span>
                                     <h3 class="title">Upload Your Photos</h3>
                                 </div>
-                                <!--1-->
                                 <div class="upload-image-add-car">
                                     <div class="upload-image">
                                         <label for="photoLoad" class="uploadLabel">
                                             <i class="icon-Group4"></i>
                                             <span>Add a Photo</span>
-                                            <input type="file" id="photoLoad" name="image1" class="photoLoad"
-                                                accept="image/*">
+                                            <input type="file" id="photoLoad" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
-                                    <!--2-->
                                     <div class="upload-image">
                                         <label for="photoLoad1" class="uploadLabel">
                                             <i class="icon-Group4"></i>
                                             <span>Add a Photo</span>
-                                            <input type="file" id="photoLoad1" name="image2" class="photoLoad"
-                                                accept="image/*">
+                                            <input type="file" id="photoLoad1" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
-                                    <!--3-->
                                     <div class="upload-image">
                                         <label for="photoLoad2" class="uploadLabel">
                                             <i class="icon-Group4"></i>
                                             <span>Add a Photo</span>
-                                            <input type="file" id="photoLoad2" name="image3" class="photoLoad"
-                                                accept="image/*">
+                                            <input type="file" id="photoLoad2" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
-                                    <!--4-->
                                     <div class="upload-image">
                                         <label for="photoLoad3" class="uploadLabel">
                                             <i class="icon-Group4"></i>
                                             <span>Add a Photo</span>
-                                            <input type="file" id="photoLoad3" name="image4" class="photoLoad"
-                                                accept="image/*">
+                                            <input type="file" id="photoLoad3" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
-                                    <!--5-->
                                     <div class="upload-image">
                                         <label for="photoLoad4" class="uploadLabel">
                                             <i class="icon-Group4"></i>
                                             <span>Add a Photo</span>
-                                            <input type="file" id="photoLoad4" name="image5" class="photoLoad"
-                                                accept="image/*">
+                                            <input type="file" id="photoLoad4" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
                                 </div>
                                 <p class="one-photo text-red">*You must upload at least one photo</p>
                             </fieldset>
-
+                             -->
 
                             <fieldset>
-                                <button type="submit" class="button-save-listing">Add
-                                    Car</button>
+                                <button type="submit" class="button-save-listing">Update Car Detail</button>
                             </fieldset>
                         </form>
                     </div>
                 </div>
                 <br><br><br><br><br>
-
-                <!--Car Table-->
-                <div class="row ">
-                    <div class="col-12">
-
-                        <h4 class="title-dashboard">Car Display</h4>
-
-
-                    </div>
-                    <br><br>
-                    <br><br>
-                    <table class="table table-bordered table-striped table-hover">
-                        <thead class="table-dark">
-                            <tr>
-                                <th colspan="7" class="text-center">Car List</th>
-                            </tr>
-                        </thead>
-                        <thead class="table-light">
-                            <tr>
-                                <th>ID</th>
-                                <th>Car Name</th>
-                                <th>Brand</th>
-                                <th>Price Per Day</th>
-                                <th>Fuel Type</th>
-                                <th>Model Year</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <% car.forEach((c,index)=>{ %>
-                                <tr>
-                                    <td>
-                                        <%= index+1 %>
-                                    </td>
-                                    <td>
-                                        <%= c.cname %>
-                                    </td>
-                                    <td>
-                                        <%= c.cbrand %>
-                                    </td>
-                                    <td>
-                                        <%= c.price %>
-                                    </td>
-                                    <td>
-                                        <%= c.fueltype %>
-                                    </td>
-                                    <td>
-                                        <%= c.modelyear %>
-                                    </td>
-                                    <td>
-                                        <a href="/admin/editcardetail/<%= c._id %>"
-                                            class="btn btn-sm btn-primary">Edit</a>
-                                        <a href="/admin/deletecardetail/<%= c._id %>"
-                                            class="btn btn-sm btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-
-                                <%})%>
-
-
-                        </tbody>
-                    </table>
-
-
-                </div>
-
 
             </div>
         </div>
@@ -560,21 +478,21 @@
 
 
     <!-- Javascript -->
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/jquery.nice-select.min.js"></script>
-    <script src="../assets/js/swiper-bundle.min.js"></script>
-    <script src="../assets/js/swiper.js"></script>
-    <script src="../assets/js/jquery-countTo.js"></script>
-    <script src="../assets/js/nouislider.min.js"></script>
-    <script src="../assets/js/price-ranger.js"></script>
-    <script src="../assets/js/magnific-popup.min.js"></script>
-    <script src="../assets/js/apexcharts.js"></script>
-    <script src="../assets/js/line-chart.js"></script>
-    <script src="../assets/js/wow.min.js"></script>
-    <script src="../assets/js/map.min.js"></script>
-    <script src="../assets/js/map.js"></script>
-    <script src="../assets/js/main.js"></script>
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../assets/js/swiper-bundle.min.js"></script>
+    <script src="../../assets/js/swiper.js"></script>
+    <script src="../../assets/js/jquery-countTo.js"></script>
+    <script src="../../assets/js/nouislider.min.js"></script>
+    <script src="../../assets/js/price-ranger.js"></script>
+    <script src="../../assets/js/magnific-popup.min.js"></script>
+    <script src="../../assets/js/apexcharts.js"></script>
+    <script src="../../assets/js/line-chart.js"></script>
+    <script src="../../assets/js/wow.min.js"></script>
+    <script src="../../assets/js/map.min.js"></script>
+    <script src="../../assets/js/map.js"></script>
+    <script src="../../assets/js/main.js"></script>
 
     </body>
 

@@ -1,10 +1,39 @@
 const CarModel = require('../../model/car')
+const BrandModel = require('../../model/brand')
+const cloudinary = require('cloudinary')
 
-class CarController{
-    static carInsert =async (req,res)=>{
+// Configuration
+cloudinary.config({
+    cloud_name: "ddblbrvxl",
+    api_key: "674549153778279",
+    api_secret: "tdXOWN_-uNiQUxj8Emqd8KvJcUA",
+});
+
+class CarController {
+    static carInsert = async (req, res) => {
         try {
             // console.log(req.body)
-            const {cname,cbrand,discription,price,fueltype,modelyear,seatcapacity,AC,PS,cdplayer,PDL,airbagD,CL,ABT,airbagP,CS,PW,BA,LS}=req.body
+            const { cname, cbrand, discription, price, fueltype, modelyear, mileage, seatcapacity, color, condition, transmission, drivertype,
+                door,location, AC, PS, cdplayer, PDL, airbagD, CL, ABT, airbagP, CS, PW, BA, LS } = req.body
+
+            // 5 images upload to Cloudinary
+            const imageFields = ['image1', 'image2', 'image3', 'image4', 'image5'];
+            const imageupload = [];
+
+            for (let image of imageFields) {
+                if (req.files[image]) {
+                    const multiupload = await cloudinary.uploader.upload(
+                        req.files[image].tempFilePath,
+                        { folder: 'carphoto' }
+                    );
+                    imageupload.push({
+                        public_id: multiupload.public_id,
+                        url: multiupload.secure_url
+                    });
+                }
+            }
+            // console.log(imageupload)
+
             const car = await CarModel.create({
                 cname,
                 cbrand,
@@ -13,6 +42,75 @@ class CarController{
                 fueltype,
                 modelyear,
                 seatcapacity,
+                mileage,
+                image: imageupload,
+                color,
+                condition,
+                transmission,
+                drivertype,
+                door,
+                location,
+                AC,
+                PS,
+                cdplayer,
+                PDL,
+                airbagD,
+                CL,
+                ABT,
+                airbagP,
+                CS,
+                PW,
+                BA,
+                LS,
+            })
+            req.flash('success', 'New CarDetail Added !')
+            res.redirect('/admin/addcar')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    static deleteCarDetail = async (req, res) => {
+        try {
+            const id = req.params.id
+            const car = await CarModel.findByIdAndDelete(id)
+            req.flash('error', 'Car Detail Deleted !')
+
+            res.redirect('/admin/addcar')
+        } catch (error) {
+            confirm.log(error)
+        }
+    }
+    static editcar = async (req, res) => {
+        try {
+            const id = req.params.id
+            const brand = await BrandModel.find()
+            const car = await CarModel.findById(id)
+            res.render('admin/editcardetail', { c: car, brand: brand })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    static carUpdateInsert = async (req, res) => {
+        try {
+            // console.log(req.body)
+            const id = req.params.id
+            const { cname, cbrand, discription, price, fueltype, modelyear, mileage, seatcapacity, color, condition, transmission, drivertype,
+                door,location, AC, PS, cdplayer, PDL, airbagD, CL, ABT, airbagP, CS, PW, BA, LS } = req.body
+            await CarModel.findByIdAndUpdate(id, {
+                cname,
+                cbrand,
+                discription,
+                price,
+                fueltype,
+                modelyear,
+                mileage,
+                seatcapacity,
+                color,
+                condition,
+                transmission,
+                drivertype,
+                door,
+                location,
                 AC,
                 PS,
                 cdplayer,
@@ -26,22 +124,11 @@ class CarController{
                 BA,
                 LS
             })
-            req.flash('success','New CarDetail Added !')
+            req.flash('success', 'Car Details Updated!')
             res.redirect('/admin/addcar')
         } catch (error) {
             console.log(error)
         }
     }
-    static deleteCarDetail = async(req,res)=>{
-        try {
-            const id = req.params.id
-            const car = await CarModel.findByIdAndDelete(id)
-            req.flash('error','Car Detail Deleted !')
-
-            res.redirect('/admin/addcar')
-        } catch (error) {
-            confirm.log(error)
-        }
-    }
 }
-module.exports=CarController
+module.exports = CarController
