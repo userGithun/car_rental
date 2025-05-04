@@ -24,16 +24,24 @@ app.use(express.urlencoded({ extended: false }));
 //flashh
 const flash = require("connect-flash");
 const session = require("express-session");
+// SESSION SETUP
 app.use(
   session({
     secret: "secret",
-    cookie: { maxAge: 60000 },
     resave: false,
     saveUninitialized: false,
+    cookie: { httpOnly: true },
   })
 );
-//message
+//flash message
 app.use(flash());
+
+// Middleware to pass user to all views
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 
 //route load
 app.use("/", web);

@@ -1,0 +1,332 @@
+<%- include('./headerAd.ejs') %>
+
+    <main id="main-content" class="site-main-dashboard">
+        <div class="page-dashboard-wrap">
+            <div class="dashboard">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="title-dashboard">My Inventory</h4>
+                    </div>
+                    <% if(approve.length>0){%>
+                        <!--Approve flash-->
+                        <div class="alert alert-success text-center">
+                            <%= approve %>
+                        </div>
+                        <%}%>
+
+                            <div class="col-md-6 sellec-list-db">
+                                <div class="group-select">
+                                    <div class="nice-select" tabindex="0">
+                                        <span class="current">Recently Added</span>
+                                        <ul class="list">
+                                            <li data-value class="option selected">Recently Added</li>
+                                            <li data-value="Public" class="option">Public</li>
+                                            <li data-value="Pending" class="option">Pending</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                <div class="show-dashboard">
+                    <span class="btn-show-dashboard">
+                        <i class="icon-th-list"></i>
+                        Show Dashboard
+                    </span>
+                </div>
+
+                <div class="table-listing-inventory">
+
+                    <% b.forEach((item,index)=>{%>
+                        <table class="listing-inventory">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="tfcl-listing-listing">
+                                            <div class="features-images">
+
+                                                <a class="thumb" title="" href="#">
+                                                    <img src="<%= item.carId.image[1].url %>" alt="photo" title="">
+                                                </a>
+                                                <ul class="controller">
+                                                    <li>
+                                                        <a href="#" class="btn-action" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="Tooltip on top">
+                                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M0 9.49971V11.9997H2.5L9.87333 4.62638L7.37333 2.12638L0 9.49971ZM11.8067 2.69305C12.0667 2.43305 12.0667 2.01305 11.8067 1.75305L10.2467 0.193047C9.98667 -0.0669531 9.56667 -0.0669531 9.30667 0.193047L8.08667 1.41305L10.5867 3.91305L11.8067 2.69305Z"
+                                                                    fill="white" />
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="btn-action" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="Tooltip on top">
+                                                            <svg width="20" height="14" viewBox="0 0 20 14" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M9.9987 0.75C5.83203 0.75 2.2737 3.34167 0.832031 7C2.2737 10.6583 5.83203 13.25 9.9987 13.25C14.1654 13.25 17.7237 10.6583 19.1654 7C17.7237 3.34167 14.1654 0.75 9.9987 0.75ZM9.9987 11.1667C7.6987 11.1667 5.83203 9.3 5.83203 7C5.83203 4.7 7.6987 2.83333 9.9987 2.83333C12.2987 2.83333 14.1654 4.7 14.1654 7C14.1654 9.3 12.2987 11.1667 9.9987 11.1667ZM9.9987 4.5C8.61537 4.5 7.4987 5.61667 7.4987 7C7.4987 8.38333 8.61537 9.5 9.9987 9.5C11.382 9.5 12.4987 8.38333 12.4987 7C12.4987 5.61667 11.382 4.5 9.9987 4.5Z"
+                                                                    fill="white" />
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="btn-action" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="Tooltip on top">
+                                                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M11.5013 10.334H14.8346V12.0007H11.5013V10.334ZM11.5013 3.66732H17.3346V5.33398H11.5013V3.66732ZM11.5013 7.00065H16.5013V8.66732H11.5013V7.00065ZM1.5013 12.0007C1.5013 12.9173 2.2513 13.6673 3.16797 13.6673H8.16797C9.08463 13.6673 9.83463 12.9173 9.83463 12.0007V3.66732H1.5013V12.0007ZM10.668 1.16732H8.16797L7.33464 0.333984H4.0013L3.16797 1.16732H0.667969V2.83398H10.668V1.16732Z"
+                                                                    fill="white" />
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="listing-summary">
+                                                <div class="mypt-brand">Brand: <%= item.carId.cbrand %>
+                                                </div>
+                                                <h6 class="listing-title">
+                                                    <a title="" href="#">
+                                                        <%= item.carId.cname %>
+                                                    </a>
+                                                </h6>
+                                                <p class="mypt-address">
+                                                    <i class="icon-map-1-1 "></i>
+                                                    <%= item.carId.location %>
+                                                </p>
+                                                <div class="price">₹ <%= item.carId.price %> /-</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="list-wrapper">
+
+                                            <% if(item.status=="Approved" ){%>
+                                                <p class="status-publish">
+                                                    👍<%= item.status %>
+                                                </p>
+                                                <%} if(item.status=="Reject" ){%>
+                                                    <p class="text-danger">
+                                                        ❌<%= item.status %>
+                                                    </p>
+                                                    <%} if(item.status=="Pending" ) { %>
+                                                        <p class="text-warning">
+                                                            <%= item.status %>
+                                                        </p>
+                                                        <%}%>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <form action="/admin/update_status/<%= item._id %>" method="post">
+                                            <!-- <div class="mb-3">
+                                                            <textarea name="comment" id="comment" class="form-control" rows="4"></textarea>
+                                                          </div>
+                                                          <input type="hidden" name="name" value="<%= item.name %>">
+                                                          <input type="hidden" name="email" value="<%= item.email %>">
+                                                          <input type="hidden" name="course" value="<%= item.course %>"> -->
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-end gap-2 mt-3">
+                                            <button type="submit" name="status" value="Approved"
+                                                class="btn btn-outline-success btn-sm px-3">
+                                                👍 Approve
+                                            </button>
+                                            <button type="submit" name="status" value="Reject"
+                                                class="btn btn-outline-danger btn-sm px-3">
+                                                ❌ Reject
+                                            </button>
+                                        </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <div class="list-wrapper">
+                                            <b>Fuel Type</b>
+                                            <p>
+                                                <%= item.carId.fueltype %>
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="list-wrapper">
+
+                                            <b>Year</b>
+                                            <p>
+                                                <%= item.carId.modelyear %>
+                                            </p>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="list-wrapper">
+
+                                            <b>Transmission</b>
+                                            <p>
+                                                <%= item.carId.transmission %>
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <%})%>
+
+                            <!-- nevigating count-->
+                            <div class="tf-pagination mt-60">
+                                <a class="prev page-numbers" href="#">
+                                    <i class="icon-3"></i>
+                                </a>
+                                <a class="page-numbers" href="#">1</a>
+                                <a class="page-numbers active" href="#">2</a>
+                                <a class="page-numbers" href="#">3</a>
+                                <a class="page-numbers" href="#">...</a>
+                                <a class="next page-numbers" href="#">
+                                    <i class="icon--1"></i>
+                                </a>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    </div>
+    </div>
+
+    </div>
+    <!-- /#page -->
+
+    <!-- Button Top -->
+    <a id="scroll-top" class="button-go"></a>
+    <!-- Button Top -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Register</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="/" accept-charset="utf-8"
+                                novalidate="novalidate">
+                                <fieldset>
+                                    <label>User name</label>
+                                    <input type="text" class="tb-my-input" name="text" placeholder="User name">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Email</label>
+                                    <input type="email" class="tb-my-input" name="email" placeholder="Email">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Confirm password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Confirm password">
+                                </fieldset>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Sign Up</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30">Allready have an account? <a class="color-popup "
+                            data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Login</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Login</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="#" accept-charset="utf-8">
+                                <fieldset>
+                                    <label>Account</label>
+                                    <input type="email" id="email" class="tb-my-input" name="email"
+                                        placeholder="Email or user name">
+                                </fieldset>
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <div class="title-forgot t-al-right mb-20"><a class="t-al-right"
+                                        data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                                        data-bs-dismiss="modal">Forgot password</a>
+                                </div>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Login</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30">Don’t you have an account? <a class="color-popup"
+                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Register</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="content-re-lo">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="title">Forgot your password?</div>
+                    <div class="register-form">
+                        <div class="respond-register-form">
+                            <form method="post" class="comment-form form-submit" action="#" accept-charset="utf-8">
+
+                                <fieldset>
+                                    <label>Password</label>
+                                    <input type="password" class="input-form password-input"
+                                        placeholder="Your password">
+                                </fieldset>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>Get new password</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box text-center mt-30"><a class="color-popup" data-bs-target="#exampleModalToggle2"
+                            data-bs-toggle="modal" data-bs-dismiss="modal">Back to Login</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- Modal -->
+
+
+    <!-- Javascript -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/swiper.js"></script>
+    <script src="../assets/js/jquery-countTo.js"></script>
+    <script src="../assets/js/nouislider.min.js"></script>
+    <script src="../assets/js/price-ranger.js"></script>
+    <script src="../assets/js/magnific-popup.min.js"></script>
+    <script src="../assets/js/apexcharts.js"></script>
+    <script src="../assets/js/line-chart.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/map.min.js"></script>
+    <script src="../assets/js/map.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    </body>
+
+    </html>

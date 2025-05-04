@@ -10,6 +10,16 @@ cloudinary.config({
 });
 
 class CarController {
+    static addcar = async (req,res)=>{
+        try {
+            const brand =await BrandModel.find()
+            const car = await CarModel.find()
+
+            res.render('admin/addcar',{brand:brand,car:car ,msg:req.flash('success'),msg1:req.flash('error')})
+        } catch (error) {
+            console.log(error)
+        }
+    }
     static carInsert = async (req, res) => {
         try {
             // console.log(req.body)

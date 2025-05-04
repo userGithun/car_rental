@@ -1,3 +1,6 @@
+
+
+
 @charset "UTF-8";
 /* ---------------------------------------------------------
     * Name: Motorx
@@ -1845,6 +1848,7 @@ body.modal-open {
   border-bottom: 1px solid #EBEBEB;
   padding-bottom: 10px;
   margin-bottom: 10px;
+  margin-right: 111px;
 }
 .mobile-menu .help-bar-mobie i {
   margin-right: 8px;

@@ -775,3 +775,68 @@
 
             </header>
             <!-- End Main Header -->
+
+
+
+
+
+            <!--booking-->
+
+            <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="text-danger mb-3">Booking No #405133924</h5>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <img src="https://cdn.motor1.com/images/mgl/QrO63/s1/2021-audi-q8.jpg" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-8">
+                      <h6 class="fw-bold">Audi Q8</h6>
+                      <p class="mb-1">From: <strong>2025-04-29</strong></p>
+                      <p class="mb-1">To: <strong>2025-05-02</strong></p>
+                      <p class="mb-1">Message: <strong>xnbhxvb</strong></p>
+                      <span class="badge bg-warning">Not Confirmed</span>
+                    </div>
+                  </div>
+        
+                  <!-- Table -->
+                  <h6 class="mt-4 text-primary">Invoice</h6>
+                  <div class="table-responsive">
+                    <table class="table table-bordered text-center">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Car Name</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Total Days</th>
+                          <th>Rent/Day</th>
+                          <th>Total</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Audi Q8</td>
+                          <td>2025-04-29</td>
+                          <td>2025-05-02</td>
+                          <td>3</td>
+                          <td>3000</td>
+                          <td><strong>9000</strong></td>
+                          <td><span class="badge bg-warning text-dark">Pending</span></td>
+                          <td>
+                            <div class="d-flex gap-2 justify-content-center">
+                              <form action="/approve/405133924" method="POST">
+                                <button class="btn btn-sm btn-success">Approve</button>
+                              </form>
+                              <form action="/reject/405133924" method="POST">
+                                <button class="btn btn-sm btn-danger">Reject</button>
+                              </form>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+        
+                </div>
+              </div>

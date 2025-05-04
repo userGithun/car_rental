@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const cloudinary = require("cloudinary");
 const BrandModel = require('../model/brand')
 const CarModel = require('../model/car')
+const BookingModel = require('../model/booking')
 
 
 // Configuration
@@ -16,25 +17,32 @@ cloudinary.config({
 
 class FrontController {
   static home = async (req, res) => {
-    const brand =await BrandModel.find().limit(6)
+    const brand = await BrandModel.find().limit(6)
     const car = await CarModel.find().limit(6)
     // console.log(brand)
     try {
       res.render("home", {
         msg: req.flash("error"),
         msg1: req.flash("success"),
-        brand:brand,
-        car:car
+        brand: brand,
+        car: car
       });
     } catch (error) {
       console.log(error);
     }
   };
+  static about = async (req, res) => {
+    try {
+      res.render('about')
+    } catch (error) {
+      console.log(error)
+    }
+  }
   static car_list = async (req, res) => {
     try {
-      
+
       res.render("car-list", {
-        
+
         msg: req.flash("error"),
         msg1: req.flash("success"),
       });
@@ -46,16 +54,16 @@ class FrontController {
     try {
       const id = req.params.id
       const cars = await CarModel.findById(id).limit(6)
-      res.render("listing-details",{car:cars});
+      res.render("listing-details", { car: cars });
     } catch (error) {
       console.log(error);
     }
   };
   static contact = async (req, res) => {
     try {
-      
+
       res.render("contact-us", {
-       
+
         msg: req.flash("error"),
         msg1: req.flash("success"),
       });
@@ -151,6 +159,11 @@ class FrontController {
           if (inEmail.role == "admin") {
             res.redirect("/admin/dashboard");
           } else {
+            req.session.user = {
+              name: inEmail.name,
+              email: inEmail.email,
+              image: inEmail.image
+            }
             res.redirect("/");
           }
         } else {
@@ -164,11 +177,105 @@ class FrontController {
   };
   static logout = async (req, res) => {
     try {
+      req.session.destroy()
       res.clearCookie("token");
       res.redirect("/");
     } catch (error) {
       console.log(error);
     }
   };
+  static profile = async (req, res) => {
+    try {
+      const {name,email,image}=req.udata
+      res.render('profile',{n:name,e:email,i:image})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  static changepass = async (req, res) => {
+    try {
+      const {name,image} = req.udata
+      res.render('changepass',{n:name,i:image})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  static changePassword = async (req, res) => {
+    try {
+      const {id} = req.udata
+      // console.log(req.body);
+      const { op, np, cp } = req.body;
+      if (op && np && cp) {
+        const user = await UserModel.findById(id);
+        const isMatched = await bcrypt.compare(op, user.password);
+        //console.log(isMatched)
+        if (!isMatched) {
+          req.flash("error", "Current password is incorrect ");
+          res.redirect("/profile");
+        } else {
+          if (np != cp) {
+            req.flash("error", "Password does not match");
+            res.redirect("/profile");
+          } else {
+            const newHashPassword = await bcrypt.hash(np, 10);
+            await UserModel.findByIdAndUpdate(id, {
+              password: newHashPassword,
+            });
+            req.flash("success", "Password Updated successfully ");
+            res.redirect("/");
+          }
+        }
+      } else {
+        req.flash("error", "ALL fields are required ");
+        res.redirect("/profile");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+  };
+  static updateProfile = async (req, res) => {
+    try {
+      const {id} = req.udata
+      console.log(id)
+      const { name, email } = req.body;
+      if (req.files) {
+        const user = await UserModel.findById(id);
+        const imageID = user.image.public_id;
+        // console.log(imageID);
+
+        //deleting image from Cloudinary
+        await cloudinary.uploader.destroy(imageID);
+        //new image update
+        const imagefile = req.files.image;
+        const imageupload = await cloudinary.uploader.upload(
+          imagefile.tempFilePath,
+          {
+            folder: "userprofile",
+          }
+        );
+        var data = {
+          name: name,
+          email: email,
+          image: {
+            public_id: imageupload.public_id,
+            url: imageupload.secure_url,
+          },
+        };
+      } else {
+        var data = {
+          name: name,
+          email: email,
+        };
+      }
+      await UserModel.findByIdAndUpdate(id, data);
+      req.flash("success", "Update Profile successfully");
+      res.redirect("/profile");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  
 }
 module.exports = FrontController;

@@ -12,6 +12,16 @@ cloudinary.config({
 });
 
 class BrandController {
+
+  static brandcreate = async (req,res)=>{
+    try {
+        const brand = await BrandModel.find()
+        res.render('admin/brand',{ b:brand ,msg:req.flash('success'),msg1:req.flash('success'),msg2:req.flash('error')})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
   static brandInsert = async (req, res) => {
     try {
       // console.log(req.body)
