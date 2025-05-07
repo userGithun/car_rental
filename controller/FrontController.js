@@ -1,6 +1,6 @@
 const ContactModel = require("../model/contact");
 const UserModel = require("../model/user");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cloudinary = require("cloudinary");
 const BrandModel = require('../model/brand')
