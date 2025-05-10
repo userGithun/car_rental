@@ -568,31 +568,37 @@
                 <div class="col-lg-4 col-md-12">
 
                     <div class="author-contact-listing-wrap">
-                       
-                        <form action="/bookingInsert" method="post" class="form-contact-admin" aria-label="Contact form">
+
+                        <form action="/bookingInsert" method="post" class="form-contact-admin"
+                            aria-label="Contact form">
                             <div>
                                 <i class="icon-Group-1" style="color: red;font-size: 19px; "></i>
-                            <!-- <span>Book Now</span> -->
-                            &nbsp;
-                            <label style="font-size: 25px;">Book Now</label>
-                            <br><br>
+                                <!-- <span>Book Now</span> -->
+                                &nbsp;
+                                <label style="font-size: 25px;">Book Now</label>
+                                <br><br>
                             </div>
 
+                            <!--Hidden tags-->
                             <input type="hidden" name="carId" value="<%= car._id %>">
+                            <input type="hidden" name="carname" value="<%= car.cname %>">
+                            <input type="hidden" name="name" value="<%= user.name %>">
+                            <input type="hidden" name="email" value="<%= user.email %>">
+                            <!--Hidden tags-->
 
                             <div class="group-form">
                                 <label for="">From Date:</label>
-                                <input class="admin-form" aria-required="true" aria-invalid="false"
-                                     value="" name="fromdate" type="date">
+                                <input class="admin-form" aria-required="true" aria-invalid="false" value=""
+                                    name="fromdate" type="date" min="<%= new Date().toISOString().split('T')[0] %>">
 
                             </div>
                             <div class="group-form">
                                 <label for="">To Date:</label>
                                 <input class="admin-form" aria-required="true" aria-invalid="false" name="todate"
-                                    value="" type="date">
+                                    value="" type="date" min="<%= new Date().toISOString().split('T')[0] %>">
 
                             </div>
-                            
+
                             <div class="group-form">
                                 <label for="">Message:</label>
                                 <textarea class="admin-form" name="message" aria-invalid="false"></textarea>
@@ -602,7 +608,7 @@
                                 <% }else{ %>
                                     <a data-bs-toggle="modal" href="#exampleModalToggle" role="button"
                                         class="fw-7 category"> <button type="submit"> Login For Book </button></a>
-                                        
+
                                     <% } %>
 
                         </form>

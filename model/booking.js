@@ -12,12 +12,23 @@ const BookingScheme = new mongoose.Schema({
     message: {
         type: String,
     },
+    //Hidden input
     carId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'AddCar'  // reference to Car model
     },
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    //Hidden input
     status: {
         type: String,
+        enum: ["Pending", "InProgress", "Approved", "Rejected"],
         default: 'Pending'
     }
 

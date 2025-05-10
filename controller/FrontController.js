@@ -54,7 +54,12 @@ class FrontController {
     try {
       const id = req.params.id
       const cars = await CarModel.findById(id).limit(6)
-      res.render("listing-details", { car: cars });
+      // const users = await UserModel.find()
+      res.render("listing-details", {
+        car: cars,
+        user : req.session.user,
+      });
+
     } catch (error) {
       console.log(error);
     }
@@ -186,23 +191,23 @@ class FrontController {
   };
   static profile = async (req, res) => {
     try {
-      const {name,email,image}=req.udata
-      res.render('profile',{n:name,e:email,i:image})
+      const { name, email, image } = req.udata
+      res.render('profile', { n: name, e: email, i: image })
     } catch (error) {
       console.log(error)
     }
   }
   static changepass = async (req, res) => {
     try {
-      const {name,image} = req.udata
-      res.render('changepass',{n:name,i:image})
+      const { name, image } = req.udata
+      res.render('changepass', { n: name, i: image })
     } catch (error) {
       console.log(error)
     }
   }
   static changePassword = async (req, res) => {
     try {
-      const {id} = req.udata
+      const { id } = req.udata
       // console.log(req.body);
       const { op, np, cp } = req.body;
       if (op && np && cp) {
@@ -236,7 +241,7 @@ class FrontController {
   };
   static updateProfile = async (req, res) => {
     try {
-      const {id} = req.udata
+      const { id } = req.udata
       console.log(id)
       const { name, email } = req.body;
       if (req.files) {
@@ -276,6 +281,6 @@ class FrontController {
     }
   };
 
-  
+
 }
 module.exports = FrontController;
