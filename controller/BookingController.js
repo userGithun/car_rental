@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const BookingModel = require('../model/booking')
 const { Resend } = require('resend')
 const moment = require('moment')
@@ -11,11 +12,13 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 class BookingController {
 
   static carbooking = async (req, res) => {
-    try {
-      const { name, image } = req.udata
-      const booking = await BookingModel.find().populate('carId')
-      // console.log(booking)
-
+    try { 
+      
+      const { name, image ,id} = req.udata
+      // console.log("User's ID:",id); // ✅ check yaha pe
+      // console.log(req.udata)
+      const booking = await BookingModel.find({user_id : id}).populate('carId')
+      
       res.render('booking', { n: name, i: image, book: booking, msg: req.flash('success') })
     } catch (error) {
       console.log(error)
@@ -25,7 +28,8 @@ class BookingController {
   static createBooking = async (req, res) => {
     try {
       // console.log(req.body)
-      const { fromdate, todate, message, name, carname, email, carId } = req.body
+      const {id} = req.udata
+      const { fromdate, todate, message, name, carname, email, carId} = req.body
       // console.log(req.body)
       const book = await BookingModel.create({
         fromdate,
@@ -34,7 +38,8 @@ class BookingController {
         carname,
         email,
         name,
-        carId
+        carId,
+        user_id:id
       })
 
       // 2. Send email to user
@@ -56,6 +61,7 @@ class BookingController {
       `,
       });
       // console.log(name, email)
+      console.log("Booking saved successfully. Redirecting now...");
       req.flash('success', "Car Booked. Please check mail :)")
       res.redirect('/booking')
 

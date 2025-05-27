@@ -48,7 +48,6 @@ class BrandController {
       console.log(error);
     }
   };
-
   static brand_delete = async (req, res) => {
     try {
       const id = req.params.id;

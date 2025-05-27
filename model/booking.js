@@ -30,7 +30,12 @@ const BookingScheme = new mongoose.Schema({
         type: String,
         enum: ["Pending", "InProgress", "Approved", "Rejected"],
         default: 'Pending'
-    }
+    },
+    // userId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "user",      // reference to user model
+    //     required: true
+    // }
 
 }, { timestamps: true })
 const BookingModel = new mongoose.model('Booking', BookingScheme)
