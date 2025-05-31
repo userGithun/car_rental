@@ -34,22 +34,22 @@ route.post('/contactInsert',FrontController.contactInsert)
 
 
 //admin
-route.get('/admin/dashboard',AdminController.dashboard)
-route.get('/admin/addcar',CarController.addcar)
-route.get('/admin/brand',BrandController.brandcreate)
-route.get('/admin/inventory',InventoryController.inventory)
+route.get('/admin/dashboard',checkAuth,AdminController.dashboard)
+route.get('/admin/addcar',checkAuth,CarController.addcar)
+route.get('/admin/brand',checkAuth,BrandController.brandcreate)
+route.get('/admin/inventory',checkAuth,InventoryController.inventory)
 
-route.post('/admin/update_status/:id',InventoryController.bookingStatus)
+route.post('/admin/update_status/:id',checkAuth,InventoryController.bookingStatus)
 //////////   Admin  brandInsert   ///////////
-route.post('/admin/brandInsert',BrandController.brandInsert)
-route.get('/admin/deletebrand/:id',BrandController.brand_delete)
-route.get('/admin/editbrand/:id',BrandController.brand_edit)
-route.post('/admin/brandupdate/:id',BrandController.brand_update)
+route.post('/admin/brandInsert',checkAuth,BrandController.brandInsert)
+route.get('/admin/deletebrand/:id',checkAuth,BrandController.brand_delete)
+route.get('/admin/editbrand/:id',checkAuth,BrandController.brand_edit)
+route.post('/admin/brandupdate/:id',checkAuth,BrandController.brand_update)
 
 //////////     Admin  CarInsert   ////////////
-route.post('/admin/carinsert',CarController.carInsert)
-route.get('/admin/deletecardetail/:id',CarController.deleteCarDetail)
-route.get('/admin/editcardetail/:id',CarController.editcar)
-route.post('/admin/editcardetail/:id',CarController.carUpdateInsert)
+route.post('/admin/carinsert',checkAuth,CarController.carInsert)
+route.get('/admin/deletecardetail/:id',checkAuth,CarController.deleteCarDetail)
+route.get('/admin/editcardetail/:id',checkAuth,CarController.editcar)
+route.post('/admin/editcardetail/:id',checkAuth,CarController.carUpdateInsert)
 
 module.exports = route;

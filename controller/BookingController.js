@@ -12,13 +12,14 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 class BookingController {
 
   static carbooking = async (req, res) => {
-    try { 
-      
-      const { name, image ,id} = req.udata
+    try {
+
+      const { name, image } = req.user
+      // console.log(req.user)
       // console.log("User's ID:",id); // ✅ check yaha pe
       // console.log(req.udata)
-      const booking = await BookingModel.find({user_id : id}).populate('carId')
-      
+      const booking = await BookingModel.find().populate('carId')
+
       res.render('booking', { n: name, i: image, book: booking, msg: req.flash('success') })
     } catch (error) {
       console.log(error)
@@ -27,9 +28,9 @@ class BookingController {
 
   static createBooking = async (req, res) => {
     try {
-      // console.log(req.body)
-      const {id} = req.udata
-      const { fromdate, todate, message, name, carname, email, carId} = req.body
+      console.log(req.body)
+const {id} = req.params
+      const { fromdate, todate, message, name, carname, email, carId } = req.body
       // console.log(req.body)
       const book = await BookingModel.create({
         fromdate,
@@ -39,7 +40,7 @@ class BookingController {
         email,
         name,
         carId,
-        user_id:id
+        user_id: id
       })
 
       // 2. Send email to user

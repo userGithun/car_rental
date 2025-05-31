@@ -25,6 +25,9 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/map.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/nice-select.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css.map">
+    <!--fontAwesome Link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 
 </head>
@@ -124,21 +127,23 @@
                                         <div class="register ml--18">
                                             <div class="flex align-center">
 
-                                                <% if(user) { %>
+                                                <% if(name) { %>
                                                     <div class="dropdown">
                                                         <button
                                                             class="btn box-shadow-none  dropdown-toggle d-flex align-items-center"
                                                             style="padding-inline: 8px; padding-block: 2px;"
                                                             type="button" data-bs-toggle="dropdown"
                                                             aria-expanded="false">
-                                                            <img src="<%= user.image.url %>" alt="Avatar"
+                                                            <img src="<%= image.url %>" alt="Avatar"
                                                                 class="rounded-circle me-2" width="30" height="30">
-                                                            &nbsp; <%= user.name %>
+                                                            &nbsp; <%= name %>
                                                         </button>
                                                         <ul class="dropdown-menu">
 
-                                                            <li><a class="dropdown-item" href="/profile">Profile Settings</a></li>
-                                                            <li><a class="dropdown-item" href="/booking">My Booking</a></li>
+                                                            <li><a class="dropdown-item" href="/profile">Profile
+                                                                    Settings</a></li>
+                                                            <li><a class="dropdown-item" href="/booking">My Booking</a>
+                                                            </li>
                                                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                                                         </ul>
                                                     </div>
@@ -146,7 +151,7 @@
                                                     <% }else{ %>
                                                         <a data-bs-toggle="modal" href="#exampleModalToggle"
                                                             role="button" class="fw-7 category"><i
-                                                                class="icon-user"></i>  Login</a>
+                                                                class="icon-user"></i> Login</a>
 
                                                         <% } %>
 
@@ -197,13 +202,10 @@
                             <div class="help-bar-mobie login-box">
                                 <% if(user) { %>
                                     <div class="dropdown">
-                                        <button
-                                            class="btn box-shadow-none  dropdown-toggle d-flex align-items-center"
-                                            
-                                            type="button" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <img src="<%= user.image.url %>" alt="Avatar"
-                                                class="rounded-circle me-2" style="width: 46px;" height="15">
+                                        <button class="btn box-shadow-none  dropdown-toggle d-flex align-items-center"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="<%= user.image.url %>" alt="Avatar" class="rounded-circle me-2"
+                                                style="width: 46px;" height="15">
                                             &nbsp; <%= user.name %>
                                         </button>
                                         <ul class="dropdown-menu">
@@ -215,9 +217,8 @@
                                     </div>
 
                                     <% }else{ %>
-                                        <a data-bs-toggle="modal" href="#exampleModalToggle"
-                                            role="button" class="fw-7 category"><i
-                                                class="icon-user"></i>  Login</a>
+                                        <a data-bs-toggle="modal" href="#exampleModalToggle" role="button"
+                                            class="fw-7 category"><i class="icon-user"></i> Login</a>
 
                                         <% } %>
                             </div>

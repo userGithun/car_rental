@@ -15,6 +15,7 @@ cloudinary.config({
   api_secret: "tdXOWN_-uNiQUxj8Emqd8KvJcUA",
 });
 
+
 class FrontController {
   static home = async (req, res) => {
     const brand = await BrandModel.find().limit(6)
@@ -57,7 +58,7 @@ class FrontController {
       // const users = await UserModel.find()
       res.render("listing-details", {
         car: cars,
-        user : req.session.user,
+
       });
 
     } catch (error) {
@@ -139,7 +140,6 @@ class FrontController {
       console.log(error);
     }
   };
-
   static Login = async (req, res) => {
     try {
       //   console.log(req.body, { msg1: req.flash("success") });
@@ -154,7 +154,7 @@ class FrontController {
         console.log(isMatched);
 
         if (isMatched) {
-          const token = jwt.sign({ id: inEmail.id }, "jwt121");
+          const token = jwt.sign({ id: inEmail.id, name: inEmail.name, email: inEmail.email, image: inEmail.image }, "jwt121");
           res.cookie("token", token);
 
           // if(inEmail.role=='customer'){
@@ -164,11 +164,6 @@ class FrontController {
           if (inEmail.role == "admin") {
             res.redirect("/admin/dashboard");
           } else {
-            req.session.user = {
-              name: inEmail.name,
-              email: inEmail.email,
-              image: inEmail.image
-            }
             res.redirect("/");
           }
         } else {

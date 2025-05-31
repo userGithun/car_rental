@@ -187,8 +187,8 @@
                                         <div class="form-group">
                                             <label>Description*</label>
                                             <div class="group-select">
-                                                <textarea id="description" value="<%= c.discription %>" placeholder="Enter Discription here"
-                                                    style="background-color: white;" name="discription">
+                                                <textarea id="description" value="" placeholder="Enter Discription here"
+                                                    style="background-color: white;" name="discription"><%= c.discription %>
                                                 </textarea>
                                             </div>
                                         </div>
@@ -298,7 +298,7 @@
 
 
 
-                            <!-- <fieldset id="upload-media" class="pd-bg">
+                            <fieldset id="upload-media" class="pd-bg">
                                 <div class="inner-title mb-30">
                                     <span class="sub-title">Media</span>
                                     <h3 class="title">Upload Your Photos</h3>
@@ -306,43 +306,48 @@
                                 <div class="upload-image-add-car">
                                     <div class="upload-image">
                                         <label for="photoLoad" class="uploadLabel">
-                                            <i class="icon-Group4"></i>
-                                            <span>Add a Photo</span>
+                                            <!-- <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span> -->
+                                            <img src="<%= c.image[0].url %>" alt="">
                                             <input type="file" id="photoLoad" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
                                     <div class="upload-image">
                                         <label for="photoLoad1" class="uploadLabel">
-                                            <i class="icon-Group4"></i>
-                                            <span>Add a Photo</span>
+                                            <!-- <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span> -->
+                                            <img src="<%= c.image[1].url %>" alt="">
                                             <input type="file" id="photoLoad1" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
                                     <div class="upload-image">
                                         <label for="photoLoad2" class="uploadLabel">
-                                            <i class="icon-Group4"></i>
-                                            <span>Add a Photo</span>
+                                            <!-- <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span> -->
+                                            <img src="<%= c.image[2].url %>" alt="">
                                             <input type="file" id="photoLoad2" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
                                     <div class="upload-image">
                                         <label for="photoLoad3" class="uploadLabel">
-                                            <i class="icon-Group4"></i>
-                                            <span>Add a Photo</span>
+                                            <!-- <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span> -->
+                                            <img src="<%= c.image[3].url %>" alt="">
                                             <input type="file" id="photoLoad3" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
                                     <div class="upload-image">
                                         <label for="photoLoad4" class="uploadLabel">
-                                            <i class="icon-Group4"></i>
-                                            <span>Add a Photo</span>
+                                            <!-- <i class="icon-Group4"></i>
+                                            <span>Add a Photo</span> -->
+                                            <img src="<%= c.image[4].url %>" alt="">
                                             <input type="file" id="photoLoad4" class="photoLoad" accept="image/*">
                                         </label>
                                     </div>
                                 </div>
                                 <p class="one-photo text-red">*You must upload at least one photo</p>
                             </fieldset>
-                             -->
+                            
 
                             <fieldset>
                                 <button type="submit" class="button-save-listing">Update Car Detail</button>

@@ -5,9 +5,14 @@ const web = require("./route/web");
 const connectDB = require("./data base/connectDB");
 const fileupload = require("express-fileupload");
 const cookieparser=require('cookie-parser')
+const setUserInfo = require('./middleware/setUserInfo')
 
 //cookies
 app.use(cookieparser())
+
+
+//set data
+app.use(setUserInfo)
 
 //help in image upload
 app.use(fileupload({ useTempFiles: true }));
