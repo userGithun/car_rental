@@ -70,39 +70,51 @@ const CarSchema = new mongoose.Schema({
     ],
     AC: {
         type: String,
+        default:"false"
     },
     PS: {
         type: String,
+        default:"false"
     },
     cdplayer: {
         type: String,
+        default:"false"
     },
     PDL: {
         type: String,
+        default:"false"
     },
     airbagD: {
         type: String,
+        default:"false"
     },
     CL: {
         type: String,
+        default:"false"
     },
     ABT: {
         type: String,
+        default:"false"
     },
     airbagP: {
         type: String,
+        default:"false"
     },
     CS: {
         type: String,
+        default:"false"
     },
     PW: {
         type: String,
+        default:"false"
     },
     BA: {
         type: String,
+        default:"false"
     },
     LS: {
-        type: String
+        type: String,
+        default:"false"
     }
 
 }, { timestamps: true })

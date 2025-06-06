@@ -23,6 +23,7 @@ route.get('/profile',checkAuth,FrontController.profile)
 route.get('/changepass',checkAuth,FrontController.changepass)
 route.post('/changePassword',checkAuth,FrontController.changePassword)
 route.post('/updateProfile',checkAuth,FrontController.updateProfile)
+
 route.get('/booking',checkAuth,BookingController.carbooking)
 // Booking Insert
 route.post('/bookingInsert',BookingController.createBooking)
@@ -39,7 +40,9 @@ route.get('/admin/addcar',CarController.addcar)
 route.get('/admin/brand',BrandController.brandcreate)
 route.get('/admin/inventory',InventoryController.inventory)
 
+//////// /// ///  Inventory update status // /// // ////////
 route.post('/admin/update_status/:id',InventoryController.bookingStatus)
+
 //////////   Admin  brandInsert   ///////////
 route.post('/admin/brandInsert',BrandController.brandInsert)
 route.get('/admin/deletebrand/:id',BrandController.brand_delete)

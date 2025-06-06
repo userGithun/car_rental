@@ -9,7 +9,7 @@ class AdminController {
             
             // const TotalContact = await ContactModel.countDocuments();
             const TotalBooking = await booking.countDocuments()
-            const ApprovedCar = await booking.countDocuments({ status :"Approve"})
+            const ApprovedCar = await booking.countDocuments({ status :"Approved"})
             const PendingCar = await booking.countDocuments({ status:"Pending"})
             const RejectCar = await booking.countDocuments({ status:"Reject"})
             res.render('admin/dashboard',{TotalBooking ,ApprovedCar, PendingCar ,RejectCar})

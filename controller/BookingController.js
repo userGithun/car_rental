@@ -20,7 +20,10 @@ class BookingController {
       // console.log(req.udata)
       const booking = await BookingModel.find().populate('carId')
 
-      res.render('booking', { n: name, i: image, book: booking, msg: req.flash('success') })
+      // Filter out bookings with missing car
+      const filteredBookings = booking.filter(b => b.carId !== null);
+
+      res.render('booking', { n: name, i: image, book: filteredBookings, msg: req.flash('success') })
     } catch (error) {
       console.log(error)
     }
@@ -29,7 +32,7 @@ class BookingController {
   static createBooking = async (req, res) => {
     try {
       console.log(req.body)
-const {id} = req.params
+      const { id } = req.params
       const { fromdate, todate, message, name, carname, email, carId } = req.body
       // console.log(req.body)
       const book = await BookingModel.create({

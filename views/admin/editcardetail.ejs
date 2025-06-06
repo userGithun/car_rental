@@ -222,16 +222,16 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="front" type="checkbox" name="AC" value="<%= c.AC %>">
-                                                    <label for="front">Air Conditioner</label>
+                                                    <input id="front" type="checkbox" name="AC" value="true" <%=c.AC ? 'checked' : '' %>>
+                                                    <label for="front">Air Conditioner ,<%= c.AC %></label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="rear" type="checkbox" name="PS" value="<%= c.PS %>">
-                                                    <label for="rear">Power Streering</label>
+                                                    <input id="rear" type="checkbox" name="PS" value="true" <%=c.PS ? 'checked' : '' %>>
+                                                    <label for="rear">Power Streering ,<%= c.PS %></label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="camera" type="checkbox" name="cdplayer" value="<%= c.cdplayer %>">
-                                                    <label for="camera">CD Player</label>
+                                                    <input id="camera" type="checkbox" name="cdplayer" value="true" <%=c.cdplayer ? 'checked' : '' %>>
+                                                    <label for="camera">CD Player ,<%= c.cdplayer %></label>
                                                 </div>
 
                                             </div>
@@ -241,34 +241,16 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="stereo" type="checkbox" name="PDL" value="<%= c.PDL %>">
-                                                    <label for="stereo">Power Door Lock</label>
+                                                    <input id="stereo" type="checkbox" name="PDL" value="true" <%=c.PDL ? 'checked' : '' %>>
+                                                    <label for="stereo">Power Door Lock ,<%= c.PDL %></label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="cd" type="checkbox" name="airbagD" value="<%= c.airbagD %>">
-                                                    <label for="cd">Airbag: Driver</label>
+                                                    <input id="cd" type="checkbox" name="airbagD" value="true" <%=c.airbagD ? 'checked' : '' %>>
+                                                    <label for="cd">Airbag: Driver ,<%= c.airbagD %></label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="dvd" type="checkbox" name="CL" value="<%= c.CL %>">
-                                                    <label for="dvd">Central Lock</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="listing-feature-item">
-                                        <div class="form-group">
-                                            <div class="group-select">
-                                                <div class="radio">
-                                                    <input id="driver" type="checkbox" name="ABT" value="check <%= c.ABT %>">
-                                                    <label for="driver">Antilock Bracking System</label>
-                                                </div>
-                                                <div class="radio">
-                                                    <input id="passenger" type="checkbox" name="airbagP" value="<%= c.airbagP %>">
-                                                    <label for="passenger">Airbag: Passenger</label>
-                                                </div>
-                                                <div class="radio">
-                                                    <input id="brakes" type="checkbox" name="CS" value="<%= c.CS %>">
-                                                    <label for="brakes">Crash Sensor</label>
+                                                    <input id="dvd" type="checkbox" name="CL" value="true" <%=c.CL ? 'checked' : '' %>>
+                                                    <label for="dvd">Central Lock ,<%= c.CL %></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -277,16 +259,34 @@
                                         <div class="form-group">
                                             <div class="group-select">
                                                 <div class="radio">
-                                                    <input id="power" type="checkbox" name="PW" value="<%= c.PW %>">
-                                                    <label for="power">Power Windows</label>
+                                                    <input id="driver" type="checkbox" name="ABT" value="true" <%=c.ABT ? 'checked' : '' %>>
+                                                    <label for="driver">Antilock Bracking System ,<%= c.ABT %></label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="defroster" type="checkbox" name="BA" value="<%= c.BA %>">
-                                                    <label for="defroster">Brake Assist</label>
+                                                    <input id="passenger" type="checkbox" name="airbagP" value="true" <%=c.airbagP ? 'checked' : '' %>>
+                                                    <label for="passenger">Airbag: Passenger ,<%= c.airbagP %></label>
                                                 </div>
                                                 <div class="radio">
-                                                    <input id="rear-window" type="checkbox" name="LS" value="<%= c.LS %>">
-                                                    <label for="rear-window">Leather Seats</label>
+                                                    <input id="brakes" type="checkbox" name="CS" value="true" <%=c.CS ? 'checked' : '' %>>
+                                                    <label for="brakes">Crash Sensor ,<%= c.CS %></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="listing-feature-item">
+                                        <div class="form-group">
+                                            <div class="group-select">
+                                                <div class="radio">
+                                                    <input id="power" type="checkbox" name="PW" value="true" <%=c.PW ? 'checked' : '' %>>
+                                                    <label for="power">Power Windows ,<%= c.PW %></label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="defroster" type="checkbox" name="BA" value="true" <%=c.BA ? 'checked' : '' %>>
+                                                    <label for="defroster">Brake Assist ,<%= c.BA %></label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input id="rear-window" type="checkbox" name="LS" value="true" <%=c.LS ? 'checked' : '' %>>
+                                                    <label for="rear-window">Leather Seats ,<%= c.LS %></label>
                                                 </div>
 
                                             </div>

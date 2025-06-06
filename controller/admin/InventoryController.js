@@ -11,7 +11,9 @@ class InventoryController {
     static inventory = async (req, res) => {
         try {
             const Booking = await BookingModel.find().populate('carId')
-            res.render('admin/inventory', { b: Booking, approve: req.flash('approve') })
+            console.log(Booking)
+            const validBookings = Booking.filter(b => b.carId);
+            res.render('admin/inventory', { b:validBookings, approve: req.flash('approve') })
         } catch (error) {
             console.log(error)
         }

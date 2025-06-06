@@ -10,12 +10,12 @@ cloudinary.config({
 });
 
 class CarController {
-    static addcar = async (req,res)=>{
+    static addcar = async (req, res) => {
         try {
-            const brand =await BrandModel.find()
+            const brand = await BrandModel.find()
             const car = await CarModel.find()
 
-            res.render('admin/addcar',{brand:brand,car:car ,msg:req.flash('success'),msg1:req.flash('error')})
+            res.render('admin/addcar', { brand: brand, car: car, msg: req.flash('success'), msg1: req.flash('error') })
         } catch (error) {
             console.log(error)
         }
@@ -24,7 +24,7 @@ class CarController {
         try {
             // console.log(req.body)
             const { cname, cbrand, discription, price, fueltype, modelyear, mileage, seatcapacity, color, condition, transmission, drivertype,
-                door,location, AC, PS, cdplayer, PDL, airbagD, CL, ABT, airbagP, CS, PW, BA, LS } = req.body
+                door, location, AC, PS, cdplayer, PDL, airbagD, CL, ABT, airbagP, CS, PW, BA, LS } = req.body
 
             // 5 images upload to Cloudinary
             const imageFields = ['image1', 'image2', 'image3', 'image4', 'image5'];
@@ -105,7 +105,15 @@ class CarController {
             // console.log(req.body)
             const id = req.params.id
             const { cname, cbrand, discription, price, fueltype, modelyear, mileage, seatcapacity, color, condition, transmission, drivertype,
-                door,location, AC, PS, cdplayer, PDL, airbagD, CL, ABT, airbagP, CS, PW, BA, LS } = req.body
+                door, location} = req.body
+
+            // Handle checkboxes: If not present in req.body, set as "false"
+            const checkboxFields = ['AC', 'PS', 'cdplayer', 'PDL', 'airbagD', 'CL', 'ABT', 'airbagP', 'CS', 'PW', 'BA', 'LS'];
+            checkboxFields.forEach(field => {
+                if (!req.body[field]) req.body[field] = "false";
+                else req.body[field] = "true";  // Optional: force it as string
+            });
+
             await CarModel.findByIdAndUpdate(id, {
                 cname,
                 cbrand,
@@ -121,19 +129,19 @@ class CarController {
                 drivertype,
                 door,
                 location,
-                AC,
-                PS,
-                cdplayer,
-                PDL,
-                airbagD,
-                CL,
-                ABT,
-                airbagP,
-                CS,
-                PW,
-                BA,
-                LS
-            })
+                AC: req.body.AC,
+                PS: req.body.PS,
+                cdplayer: req.body.cdplayer,
+                PDL: req.body.PDL,
+                airbagD: req.body.airbagD,
+                CL: req.body.CL,
+                ABT: req.body.ABT,
+                airbagP: req.body.airbagP,
+                CS: req.body.CS,
+                PW: req.body.PW,
+                BA: req.body.BA,
+                LS: req.body.LS,
+            });
             req.flash('success', 'Car Details Updated!')
             res.redirect('/admin/addcar')
         } catch (error) {

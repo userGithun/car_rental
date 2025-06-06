@@ -200,26 +200,28 @@
                                 </ul>
                             </div>
                             <div class="help-bar-mobie login-box">
-                                <% if(user) { %>
+                                <% if(name) { %>
                                     <div class="dropdown">
                                         <button class="btn box-shadow-none  dropdown-toggle d-flex align-items-center"
-                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="<%= user.image.url %>" alt="Avatar" class="rounded-circle me-2"
-                                                style="width: 46px;" height="15">
-                                            &nbsp; <%= user.name %>
+                                            style="padding-inline: 8px; padding-block: 2px;" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="<%= image.url %>" alt="Avatar" class="rounded-circle me-2"
+                                                width="30" height="30">
+                                            &nbsp; <%= name %>
                                         </button>
                                         <ul class="dropdown-menu">
 
-                                            <li><a class="dropdown-item" href="/profile">Profile Settings</a></li>
-                                            <li><a class="dropdown-item" href="/booking">My Booking</a></li>
+                                            <li><a class="dropdown-item" href="/profile">Profile
+                                                    Settings</a></li>
+                                            <li><a class="dropdown-item" href="/booking">My Booking</a>
+                                            </li>
                                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                                         </ul>
                                     </div>
 
                                     <% }else{ %>
-                                        <a data-bs-toggle="modal" href="#exampleModalToggle" role="button"
+                                        <a data-bs-toggle="modal" href="#exampleModalToggle2" role="button"
                                             class="fw-7 category"><i class="icon-user"></i> Login</a>
-
                                         <% } %>
                             </div>
 

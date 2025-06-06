@@ -180,7 +180,7 @@ class FrontController {
       req.session.destroy()
       res.clearCookie("token");
       res.redirect("/");
-    } catch (error) {
+    } catch (error) { 
       console.log(error);
     }
   };

@@ -31,116 +31,119 @@
                         </div>
 
                         <!--car Booking-->
-                                                    
-                            <% book.reverse().forEach((b , index)=>{%>
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <h5 class="text-danger mb-3">Booking No #<%= index + 1 %>
-                                        </h5>
-                                        <div class="row">
-                                            <div class="col-md-4">
+
+                        <% book.reverse().forEach((b , index)=>{%>
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="text-danger mb-3">Booking No #<%= index + 1 %>
+                                    </h5>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <% if (b.carId && b.carId.image && b.carId.image.length> 1) { %>
                                                 <img src="<%= b.carId.image[1].url %>" width="100" alt="Car Image" />
-                                            </div>
-
-                                            <div class="col-md-8">
-                                                <h6 class="fw-bold">
-                                                    <%= b.carId ? b.carId.cname : 'N/A' %>
-                                                </h6>
-                                                <p class="mb-1">Fuel Type: <strong>
-                                                        <%= b.carId.fueltype %> %>
-                                                    </strong>
-                                                </p>
-                                                <p class="mb-1">Mileage: <strong>
-                                                        <%= b.carId.mileage %> Km/L %>
-                                                    </strong></p>
-
-                                                <p class="mb-1">Model: <strong>
-                                                        <%= b.carId.modelyear %> %>
-                                                    </strong></p>
-                                                <p class="mb-1">Transmission: <strong>
-                                                        <%= b.carId.transmission %> %>
-                                                    </strong></p>
-
-                                                <% if(b.status=="Approved" ) {%>
-                                                    <span class="badge bg-success">👍Confirmed </span>
-                                                    <%} if(b.status=="Reject" ){%>
-                                                        <span class="badge bg-danger text-white">
-                                                            <span style="background:white;border-radius: 4px;">❌</span>
-                                                            Not Confirmed</span>
-                                                        <%} if ( b.status=="Pending" ) {%>
-                                                            <span class="badge bg-warning">Not Confirmed</span>
-                                                            <%}%>
-                                            </div>
+                                                <% } else { %>
+                                                    <p>No image available</p>
+                                                    <% } %>
                                         </div>
+                                        <div class="col-md-8">
+                                            <h6 class="fw-bold">
+                                                <%= b.carId ? b.carId.cname : 'N/A' %>
+                                            </h6>
+                                            <p class="mb-1">Fuel Type: <strong>
+                                                    <%= b.carId.fueltype %> %>
+                                                </strong>
+                                            </p>
+                                            <p class="mb-1">Mileage: <strong>
+                                                    <%= b.carId.mileage %> Km/L %>
+                                                </strong></p>
 
-                                        <!-- Table -->
+                                            <p class="mb-1">Model: <strong>
+                                                    <%= b.carId.modelyear %> %>
+                                                </strong></p>
+                                            <p class="mb-1">Transmission: <strong>
+                                                    <%= b.carId.transmission %> %>
+                                                </strong></p>
 
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered text-center">
-                                                <thead>
-                                                    <tr>
-                                                        <th colspan="7">
-                                                            <h6 class="mt-4 text-primary text-center">Invoice</h6>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th>Car Name</th>
-                                                        <th>From</th>
-                                                        <th>To</th>
-                                                        <th>Total Days</th>
-                                                        <th>Rent/Day</th>
-                                                        <th>Total</th>
-                                                        <th>Status</th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <%= b.carId.cname %>
-                                                        </td>
-                                                        <td>
-                                                            <%= b.fromdate %>
-                                                        </td>
-                                                        <td>
-                                                            <%= b.todate %>
-                                                        </td>
-                                                        <% const from=new Date(b.fromdate); const to=new Date(b.todate);
-                                                            const totalDays=Math.ceil((to - from) / (1000 * 60 * 60 *
-                                                            24)) + 1; %>
-                                                            <td>
-                                                                <%= totalDays %>
-                                                            </td>
-                                                            <td>₹ <%= b.carId.price %>
-                                                            </td>
-                                                            <td><strong>₹ <%= totalDays * b.carId.price %>/-</strong>
-                                                            </td>
-                                                            <td>
-
-                                                                <% if(b.status=="Approved" ){%>
-                                                                    <span class="badge bg-success text-white">
-                                                                        👍<%= b.status %>
-                                                                    </span>
-                                                                    <%} if(b.status=="Reject" ){%>
-                                                                        <span class="badge bg-danger text-white">
-                                                                            <%= b.status %>
-                                                                        </span>
-                                                                        <%} if(b.status=="Pending" ) { %>
-                                                                            <span class="badge bg-warning text-dark">
-                                                                                <%= b.status %>
-                                                                            </span>
-                                                                            <%}%>
-                                                            </td>
-
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            <% if(b.status=="Approved" ) {%>
+                                                <span class="badge bg-success">👍Confirmed </span>
+                                                <%} if(b.status=="Reject" ){%>
+                                                    <span class="badge bg-danger text-white">
+                                                        <span style="background:white;border-radius: 4px;">❌</span>
+                                                        Not Confirmed</span>
+                                                    <%} if ( b.status=="Pending" ) {%>
+                                                        <span class="badge bg-warning">Not Confirmed</span>
+                                                        <%}%>
                                         </div>
                                     </div>
+
+                                    <!-- Table -->
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="7">
+                                                        <h6 class="mt-4 text-primary text-center">Invoice</h6>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Car Name</th>
+                                                    <th>From</th>
+                                                    <th>To</th>
+                                                    <th>Total Days</th>
+                                                    <th>Rent/Day</th>
+                                                    <th>Total</th>
+                                                    <th>Status</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <%= b.carId.cname %>
+                                                    </td>
+                                                    <td>
+                                                        <%= b.fromdate %>
+                                                    </td>
+                                                    <td>
+                                                        <%= b.todate %>
+                                                    </td>
+                                                    <% const from=new Date(b.fromdate); const to=new Date(b.todate);
+                                                        const totalDays=Math.ceil((to - from) / (1000 * 60 * 60 * 24)) +
+                                                        1; %>
+                                                        <td>
+                                                            <%= totalDays %>
+                                                        </td>
+                                                        <td>₹ <%= b.carId.price %>
+                                                        </td>
+                                                        <td><strong>₹ <%= totalDays * b.carId.price %>/-</strong>
+                                                        </td>
+                                                        <td>
+
+                                                            <% if(b.status=="Approved" ){%>
+                                                                <span class="badge bg-success text-white">
+                                                                    👍<%= b.status %>
+                                                                </span>
+                                                                <%} if(b.status=="Reject" ){%>
+                                                                    <span class="badge bg-danger text-white">
+                                                                        <%= b.status %>
+                                                                    </span>
+                                                                    <%} if(b.status=="Pending" ) { %>
+                                                                        <span class="badge bg-warning text-dark">
+                                                                            <%= b.status %>
+                                                                        </span>
+                                                                        <%}%>
+                                                        </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                                <%})%>
+                            </div>
+                            <%})%>
             </div>
         </div>
     </div>
